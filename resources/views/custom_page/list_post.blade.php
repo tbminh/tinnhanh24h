@@ -5,13 +5,17 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <h2><i class="fa fa-gears bg-orange"></i> Gadgets <small class="hidden-xs-down hidden-sm-down">Nulla felis eros, varius sit amet volutpat non. </small></h2>
+                <h2><i class="fa fa-gears bg-orange"></i> {{ $get_cate->cate_name }}
+                     <small class="hidden-xs-down hidden-sm-down">
+                        {{ $get_cate->cate_note }}
+                    </small>
+                </h2>
             </div><!-- end col -->
             <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Blog</a></li>
-                    <li class="breadcrumb-item active">Gadgets</li>
+                    <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
+                    <li class="breadcrumb-item"><a href="#">Tin Tức</a></li>
+                    <li class="breadcrumb-item active"> {{ $get_cate->cate_name }} </li>
                 </ol>
             </div><!-- end col -->                    
         </div><!-- end row -->
@@ -30,12 +34,11 @@
                         @foreach ($get_list as $data)
                             <div class="blog-box">
                                 <div class="post-media">
-                                    <a href="tech-single.html" title="">
+                                    <a href=" {{url('post-detail/'.$data->id)}} " title="">
                                         <img src=" {{url('public/upload/'.$data->image)}} " alt="" class="img-fluid">
                                         <div class="hovereffect">
                                             <span class="videohover"></span>
                                         </div>
-                                        <!-- end hover -->
                                     </a>
                                 </div>
                                 <!-- end media -->
@@ -47,11 +50,11 @@
                                             <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
                                         </ul>
                                     </div><!-- end post-sharing -->
-                                    <h4><a href="tech-single.html" title=""> {{$data->title}} </a></h4>
+                                    <h4><a href="{{url('post-detail/'.$data->id)}}" title=""> {{$data->title}} </a></h4>
                                     <p>  {{substr($data->content,0,100)."....."}} </p>
-                                    <small><a href="tech-category.html" title="">Videos</a></small>
-                                    <small><a href="tech-single.html" title="">18 July, 2017</a></small>
-                                    <small><a href="tech-author.html" title="">by Amanda</a></small>
+                                    <small><a href="#" title="">Videos</a></small>
+                                    <small><a href="#" title="">18 July, 2017</a></small>
+                                    <small><a href="#" title="">by Amanda</a></small>
                                     <small><a href="#" title=""><i class="fa fa-eye"></i> 1114</a></small>
                                 </div><!-- end meta -->
                             </div><!-- end blog-box -->
@@ -62,21 +65,8 @@
                 </div><!-- end page-wrapper -->
 
                 <hr class="invis">
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div><!-- end col -->
-                </div><!-- end row -->
+                {{$get_list->links('layout.my-paginate')}}
+                <!-- end row -->
             </div><!-- end col -->
 
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
@@ -141,7 +131,6 @@
 
                     <div class="widget">
                         <h2 class="widget-title">Follow Us</h2>
-
                         <div class="row text-center">
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                 <a href="#" class="social-button facebook-button">

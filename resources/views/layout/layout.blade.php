@@ -49,7 +49,7 @@
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="tech-index.html"><img src="public/images/version/tech-logo.png" alt=""></a>
+                    <a class="navbar-brand" href="tech-index.html"><img src=" {{url('public/images/version/tech-logo.png')}} " alt=""></a>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
@@ -433,17 +433,17 @@
                         </ul>
                         <ul class="navbar-nav mr-2">
                            @if (Auth::check())
-                            <li class="nav-item">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-user"></i>  {{ Auth::user()->full_name}}
-                                    </button>
-                                    <div class="dropdown-menu">
-                                      <a class="dropdown-item" href="#"><i class="fa fa-info"></i>  Thông Tin Cá Nhân</a>
-                                      <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i>Đăng Xuất</a>
+                                <li class="nav-item">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-user"></i>  {{ Auth::user()->full_name}}
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#"><i class="fa fa-info"></i>  Thông Tin Cá Nhân</a>
+                                            <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i>Đăng Xuất</a>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
                            @else
                                 <li class="nav-item">
                                     <button type="button" class="btn btn-light btn-round" data-toggle="modal" data-target="#loginModal">
@@ -464,38 +464,38 @@
         {{-- Modal login --}}
         <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-body">
-                  <div class="form-title text-center">
-                    <h4>Đăng Nhập</h4>
-                  </div>
-                  <div class="d-flex flex-column text-center">
-                    <form action="{{ url('post-login') }}" method="POST">
-                        @csrf
-                        <div class="form-group">
-                            <input type="email" class="form-control" name="email" placeholder="Nhập email...">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="form-title text-center">
+                            <h4>Đăng Nhập</h4>
                         </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" name="password" placeholder="Mật Khẩu...">
+                        <div class="d-flex flex-column text-center">
+                            <form action="{{ url('post-login') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="email" placeholder="Nhập email...">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="password" placeholder="Mật Khẩu...">
+                                </div>
+                                <button type="submit" class="btn btn-block btn-round" style="border-radius: 3rem;"><b>Đăng Nhập</b></button>
+                            </form>
+                            
+                            <div class="text-center text-muted delimiter">Hoặc đăng nhập bằng:</div>
+                            <div class="d-flex justify-content-center social-buttons">
+                                <a href=" {{url('auth/redirect/google')}} " style="background: #d63031 !important; border-radius: 3rem;" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Google">
+                                    <i class="fa fa-google"></i>
+                                </a>&emsp;
+                                <a href="#" style="background: #0984e3 #important;  border-radius: 3rem;" class="btn btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-block btn-round" style="border-radius: 3rem;"><b>Đăng Nhập</b></button>
-                    </form>
-                    
-                    <div class="text-center text-muted delimiter">Hoặc đăng nhập bằng:</div>
-                    <div class="d-flex justify-content-center social-buttons">
-                      <a href="#" style="background: #d63031 !important; border-radius: 3rem;" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Google">
-                        <i class="fa fa-google"></i>
-                      </a>&emsp;
-                      <a href="#" style="background: #0984e3 #important;  border-radius: 3rem;" class="btn btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
-                        <i class="fa fa-facebook"></i>
-                      </a>
                     </div>
-                  </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <div class="signup-section">Chưa có tài khoản? <a href="#a" class="text-info"> Đăng Ký</a>.</div>
+                    </div>
                 </div>
-                <div class="modal-footer d-flex justify-content-center">
-                    <div class="signup-section">Chưa có tài khoản? <a href="#a" class="text-info"> Đăng Ký</a>.</div>
-                </div>
-              </div>
             </div>
         </div>
           {{-- End modal login --}}

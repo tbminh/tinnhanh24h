@@ -19,11 +19,14 @@ use App\Http\Middleware\CheckLogin;
 Route::get('/',[HomeConTroller::class,'index']);
 
 Route::post('/post-signup',[HomeConTroller::class,'add_user']);
-Route::post('/post-login',[HomeConTroller::class,'post_login']);
+Route::post('post-login',[HomeConTroller::class,'post_login']);
 Route::get('/logout',[HomeConTroller::class,'logout']);
 Route::get('/page-contact',[HomeConTroller::class,'page_contact']);
-Route::get('/post-detail',[HomeConTroller::class,'post_detail']);
+Route::get('/post-detail/{id}',[HomeConTroller::class,'post_detail']);
 Route::get('list-post/{id}',[HomeController::class,'list_post']);
+// Đăng nhập google
+Route::get('auth/redirect/{provider}',[HomeController::class,'redirect'] );
+Route::get('callback/{provider}',[HomeController::class,'callback']);
 
 // ----------------PAGE ADMIN ------------------------------//
 Route::get('page-login-admin',function(){

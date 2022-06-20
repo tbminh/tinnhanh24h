@@ -8,6 +8,7 @@ use Dotenv\Exception\ValidationException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Laravel\Socialite\Facades\Socialite;
 
 class HomeConTroller extends Controller
 {
@@ -19,7 +20,8 @@ class HomeConTroller extends Controller
     {
         try{
 
-        }catch(ValidationException $e){
+        }
+        catch(ValidationException $e){
             
         }
         $add_user = new User();
@@ -45,20 +47,61 @@ class HomeConTroller extends Controller
         $password = $request->input('password');
         if(Auth::attempt(['email' => $email, 'password' => $password, 'role_id' => 3])){
             return redirect()->back()->with('alert','Đăng nhập thành công');
+        } 
+        else
+        {
+            return redirect()->back()->with('alert','Sai mật khẩu');
         }
     }
     public function page_contact(){
         return view('custom_page.page_contact');
     }
-    public function logout  (){
+    public function logout(){
         Auth::logout();
         return redirect()->back();
     }
-    public function post_detail(){
-        return view('custom_page.post_detail');
+    public function post_detail($id){
+        $get_detail = DB::table('posts')->where('id',$id)->first();
+        $get_cate = DB::table('categories')->where('id',$get_detail->cate_id)->first();
+        return view('custom_page.post_detail',[
+                'get_detail'=>$get_detail,
+                'get_cate'=>$get_cate
+                ]);
     }
     public function list_post($id){
+        $get_cate = DB::table('categories')->where('id',$id)->first();
         $get_list = DB::table('posts')->where('cate_id',$id)->latest()->paginate(3);
-        return view('custom_page.list_post',['get_list'=>$get_list]);
+        return view('custom_page.list_post',[
+            'get_list'=>$get_list,
+            'get_cate'=> $get_cate
+        ]);
+    }
+
+    public function redirect($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+ 
+    public function callback($provider)
+    {
+        $getInfo = Socialite::driver($provider)->user();
+        
+        $user = $this->createUser($getInfo,$provider);
+    
+        auth()->login($user);
+    
+        return redirect()->to('/home');
+    }
+    function createUser($getInfo,$provider){
+        $user = User::where('provider_id', $getInfo->id)->first();
+        if (!$user) {
+            $user = User::create([
+                'name'     => $getInfo->name,
+                'email'    => $getInfo->email,
+                'provider' => $provider,
+                'provider_id' => $getInfo->id
+            ]);
+        }
+        return $user;
     }
 }

@@ -8,14 +8,15 @@
                 <div class="page-wrapper">
                     <div class="blog-title-area text-center">
                         <ol class="breadcrumb hidden-xs-down">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Blog</a></li>
-                            <li class="breadcrumb-item active">Top 10 phone applications and 2017 mobile design awards</li>
+                            <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
+                            <li class="breadcrumb-item"><a href="#">Tin Tức</a></li>
                         </ol>
 
-                        <span class="color-orange"><a href="tech-category-01.html" title="">Technology</a></span>
+                        <span class="color-orange active">
+                            <a href=" {{url('list-post/'.$get_cate->id)}} ">{{$get_cate->cate_name}} </a>
+                        </span>
 
-                        <h3>Top 10 phone applications and 2017 mobile design awards</h3>
+                        <h3> {{$get_detail->title}} </h3>
 
                         <div class="blog-meta big-meta">
                             <small><a href="tech-single.html" title="">21 July, 2017</a></small>
@@ -33,18 +34,12 @@
                     </div><!-- end title -->
 
                     <div class="single-post-media">
-                        <img src="public/upload/tech_menu_08.jpg" alt="" class="img-fluid">
+                        <img src=" {{url('public/upload/'.$get_detail->image)}} " alt="" class="img-fluid">
                     </div><!-- end media -->
 
                     <div class="blog-content">  
                         <div class="pp">
-                            <p>In lobortis pharetra mattis. Morbi nec nibh iaculis, <a href="#">bibendum augue a</a>, ultrices nulla. Nunc velit ante, lacinia id tincidunt eget, faucibus nec nisl. In mauris purus, bibendum et gravida dignissim, venenatis commodo lacus. Duis consectetur quis nisi nec accumsan. Pellentesque enim velit, ut tempor turpis. Mauris felis neque, egestas in lobortis et,iaculis at nunc ac, rhoncus sagittis ipsum. </p>
-
-                            <h3><strong>Maecenas non convallis quam, eu sodales justo. Pellentesque quis lectus elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong></h3>
-
-                            <p>Donec nec metus sed leo sollicitudin ornare sed consequat neque. Aliquam iaculis neque quis dui venenatis, eget posuere felis viverra. Ut sit amet feugiat elit, nec elementum velit. Sed eu nisl convallis, efficitur turpis eu, euismod nunc. Proin neque enim, malesuada non lobortis nec, facilisis et lectus. Ie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </p>
-
-                            <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+                            <p> {{ $get_detail->content }} </p>
 
                         </div><!-- end pp -->
 
@@ -116,7 +111,7 @@
                                     <div class="list-group">
                                         <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between text-right">
-                                                <img src="public/upload/tech_menu_19.jpg" alt="" class="img-fluid float-right">
+                                                {{-- <img src=" {{url('public/upload/'.$get_detail->image)}} " alt="" class="img-fluid float-right"> --}}
                                                 <h5 class="mb-1">5 Beautiful buildings you need to before dying</h5>
                                                 <small>Prev Post</small>
                                             </div>
