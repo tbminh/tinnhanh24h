@@ -480,7 +480,6 @@
                                 </div>
                                 <button type="submit" class="btn btn-block btn-round" style="border-radius: 3rem;"><b>Đăng Nhập</b></button>
                             </form>
-                            
                             <div class="text-center text-muted delimiter">Hoặc đăng nhập bằng:</div>
                             <div class="d-flex justify-content-center social-buttons">
                                 <a href=" {{url('auth/redirect/google')}} " style="background: #d63031 !important; border-radius: 3rem;" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Google">
