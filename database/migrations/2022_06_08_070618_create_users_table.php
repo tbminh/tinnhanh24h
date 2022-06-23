@@ -26,6 +26,8 @@ class CreateUsersTable extends Migration
             $table->integer('gender')->nullable();
             $table->integer('phone_number')->nullable();
             $table->string('avatar')->nullable();
+            $table->string('provider')->nullable();
+            $table->string('provider_id')->nullable();
             $table->timestamps();
         });
     }

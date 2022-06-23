@@ -29,6 +29,7 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+//    usage email: trinhbaominhct2016@gmail.com by URL:'https://console.cloud.google.com/apis'
     'google' => [
         'client_id' => '910359428611-rlmsvbrqavlbmcth96r6b1u3r2mgabho.apps.googleusercontent.com',
         'client_secret' => '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',

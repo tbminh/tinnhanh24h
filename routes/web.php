@@ -20,7 +20,7 @@ Route::get('/',[HomeConTroller::class,'index']);
 
 Route::post('/post-signup',[HomeConTroller::class,'add_user']);
 Route::post('post-login',[HomeConTroller::class,'post_login']);
-Route::get('/logout',[HomeConTroller::class,'logout']);
+Route::get('logout',[HomeConTroller::class,'logout']);
 Route::get('/page-contact',[HomeConTroller::class,'page_contact']);
 Route::get('/post-detail/{id}',[HomeConTroller::class,'post_detail']);
 Route::get('list-post/{id}',[HomeController::class,'list_post']);

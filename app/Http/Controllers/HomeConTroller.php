@@ -15,14 +15,14 @@ class HomeConTroller extends Controller
     public function index(){
         return view('custom_page.index');
     }
-    
+
     public function add_user(Request $request)
     {
         try{
 
         }
         catch(ValidationException $e){
-            
+
         }
         $add_user = new User();
         $add_user->role_id = 3;
@@ -39,7 +39,7 @@ class HomeConTroller extends Controller
             $add_user->avatar = $image_name;
         }
         $add_user->save();
-        return redirect()->back()->with('alert','Đăng ký thành công'); 
+        return redirect()->back()->with('alert','Đăng ký thành công');
     }
     //Kiểm tra đăng nhập
     public function post_login(Request $request){
@@ -47,7 +47,7 @@ class HomeConTroller extends Controller
         $password = $request->input('password');
         if(Auth::attempt(['email' => $email, 'password' => $password, 'role_id' => 3])){
             return redirect()->back()->with('alert','Đăng nhập thành công');
-        } 
+        }
         else
         {
             return redirect()->back()->with('alert','Sai mật khẩu');
@@ -81,25 +81,29 @@ class HomeConTroller extends Controller
     {
         return Socialite::driver($provider)->redirect();
     }
- 
+
     public function callback($provider)
     {
         $getInfo = Socialite::driver($provider)->user();
-        
+//        dd($getInfo->id);
         $user = $this->createUser($getInfo,$provider);
-    
+
         auth()->login($user);
-    
-        return redirect()->to('/home');
+
+        return redirect()->to('/');
     }
-    function createUser($getInfo,$provider){
+    function createUser($getInfo,$provider)
+    {
         $user = User::where('provider_id', $getInfo->id)->first();
         if (!$user) {
+//            dd($getInfo);
             $user = User::create([
-                'name'     => $getInfo->name,
+                'role_id' => 3,
+                'full_name' => $getInfo->name,
                 'email'    => $getInfo->email,
-                'provider' => $provider,
-                'provider_id' => $getInfo->id
+                'password'=> bcrypt('provider12345'),
+                'provider_id' => $getInfo->id,
+                'provider' => $provider
             ]);
         }
         return $user;

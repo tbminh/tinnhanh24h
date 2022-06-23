@@ -4,22 +4,22 @@
     <!-- Basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <!-- Site Metas -->
     <title>Tech Blog - Stylish Magazine Blog Template</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-    
+
     <!-- Site Icons -->
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <!-- Design fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('public/css/bootstrap.css')}}" rel="stylesheet">
@@ -440,7 +440,7 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="#"><i class="fa fa-info"></i>  Thông Tin Cá Nhân</a>
-                                            <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i>Đăng Xuất</a>
+                                            <a class="dropdown-item" href="{{url('logout')}}"><i class="fa fa-sign-out"></i>Đăng Xuất</a>
                                         </div>
                                     </div>
                                 </li>
@@ -448,12 +448,12 @@
                                 <li class="nav-item">
                                     <button type="button" class="btn btn-light btn-round" data-toggle="modal" data-target="#loginModal">
                                         <i class="fa fa-sign-in"></i>  Đăng Nhập
-                                    </button> 
+                                    </button>
                                 </li>
                                 <li class="nav-item">
                                     <button type="button" class="btn btn-light btn-round" data-toggle="modal" data-target="#signupModal">
                                         <i class="fa fa-check"></i>  Đăng Ký
-                                    </button> 
+                                    </button>
                                 </li>
                            @endif
                         </ul>
@@ -555,7 +555,7 @@
                                 <a href="index.html"><img src="images/version/tech-footer-logo.png" alt="" class="img-fluid"></a>
                                 <p>Tech Blog là trang blog về công nghệ, chúng tôi chia sẽ những tin tức, bài viết và kiến thức về công nghệ bạn cần.</p>
                                 <div class="social">
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>              
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
                                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
                                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
                                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google Plus"><i class="fa fa-google-plus"></i></a>
