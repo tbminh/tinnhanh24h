@@ -70,9 +70,10 @@
                 icon: 'success',
                 title: 'Đã thay đổi mật khẩu. Vui lòng đăng nhập!',
                 showConfirmButton: true,
-                timer: 3000
-            })
-            location.href = "{{ url('logout-admin') }}";
+                timer: 5000
+            }).then(function(){
+                window.location.href = "{{ url('logout-admin') }}";
+            });
         </script>
     @endif
 @endsection

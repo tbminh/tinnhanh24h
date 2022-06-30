@@ -503,6 +503,7 @@
            <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
+                        <div class="alert alert-danger" style="display:none"></div>
                         <div class="modal-body">
                             <div class="form-title text-center">
                                 <h4>Đăng Ký</h4>
@@ -511,19 +512,19 @@
                                 <form class="form-login" action="{{ url('post-signup') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="fullname" placeholder="Nhập họ tên...">
+                                        <input type="text" class="form-control" name="fullname"  id="fullname" placeholder="Nhập họ tên...">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" name="email" placeholder="Nhập email...">
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Nhập email...">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu...">
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Nhập mật khẩu...">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" name="confirm" placeholder="Xác nhận mật khẩu...">
+                                        <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Xác nhận mật khẩu...">
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" class="form-control" name="phone" placeholder="Nhập số điện thoại...">
+                                        <input type="number" class="form-control" name="phone" id="phone" placeholder="Nhập số điện thoại...">
                                     </div>
                                     <div class="form-check">
                                         <label for="" style="display: inline;">Giới tính</label>
@@ -535,16 +536,54 @@
                                         <input type="file" class="form-control-file" name="inputFileImage">
                                         <img id="blah" src="#" style="max-width:100%;height:50px;border-radius:5px;"/>
                                     </div>
-                                    <button type="submit" class="btn btn-block btn-round" style="border-radius: 3rem;"><b>Đăng Ký</b></button>
+                                    <button type="submit" class="btn btn-block btn-round" style="border-radius: 3rem;" id="ajaxSubmit"><b>Đăng Ký</b></button>
                                 </form>
                             </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <div class="signup-section">Bạn đã có tài khoản <a href="#a" class="text-info"> Đăng Nhập</a>.</div>
+                            <div class="signup-section">Bạn đã có tài khoản <a href="#a" class="text-info"> Đăng Nhập</a></div>
                         </div>
                     </div>
                 </div>
           </div>
+          <script>
+            jQuery(document).ready(function(){
+               jQuery('#ajaxSubmit').click(function(e){
+                  e.preventDefault();
+                  $.ajaxSetup({
+                     headers: {
+                         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                     }
+                 });
+                  jQuery.ajax({
+                     url: "{{ url('post-signup') }}",
+                     method: 'POST',
+                     data: {
+                        name: jQuery('#fullname').val(),
+                        email: jQuery('#email').val(),
+                        password: jQuery('#password').val(),
+                        confirm: jQuery('#confirm').val(),
+                        phone: jQuery('#phone').val(),
+                     },
+                    success: function(result){
+                         if(result.status == 0)
+                         {
+                             jQuery('.alert-danger').html('');
+        
+                             jQuery.each(result.errors, function(key, val){
+                                 jQuery('.alert-danger').show();
+                                 jQuery('.alert-danger').append('<li>'+val[0]+'</li>');
+                             });
+                         }
+                         else
+                         {
+                             jQuery('.alert-danger').hide();
+                             $('#myModal').modal('hide');
+                         }
+                    }});
+                  });
+               });
+         </script>
           {{-- end modal sign up  --}}
         <footer class="footer">
             <div class="container">
@@ -628,5 +667,8 @@
     <script src="{{asset('public/js/tether.min.js')}}"></script>
     <script src="{{asset('public/js/bootstrap.min.js')}}"></script>
     <script src=" {{asset('public/js/custom.js')}} "></script>
+    
 </body>
+
+
 </html>

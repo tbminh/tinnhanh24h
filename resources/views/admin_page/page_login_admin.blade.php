@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="{{ url('public/dist/css/adminlte.min.css') }}">
 
 <style>
-        body {
+    body {
         background: #222D32;
         font-family: 'Roboto', sans-serif;
     }
-
+    .alert ul li{
+        color: #fff;
+    }
     .login-box {
         margin-top: 75px;
         height: auto;
@@ -140,9 +142,6 @@
         <div class="row">
             <div class="col-lg-3 col-md-2"></div>
             <div class="col-lg-6 col-md-8 login-box">
-                <div class="col-lg-12 login-key">
-                    <i class="fa fa-key" aria-hidden="true"></i>
-                </div>
                 <div class="col-lg-12 login-title">
                     ĐĂNG NHẬP TRANG QUẢN TRỊ
                 </div>
@@ -159,11 +158,18 @@
                                 <label class="form-control-label">PASSWORD</label>
                                 <input type="password" class="form-control" name="inputPass">
                             </div>
-
-                            <div class="col-lg-12 loginbttm">
-                                <div class="col-lg-6 login-btm login-text">
-                                    <!-- Error Message -->
+                            <!-- Error Message -->
+                            @if ($errors->any())
+                                <div class="alert">
+                                    <ul>
+                                        @foreach ($errors->all() as $err)
+                                            <li>{{ $err }}</li>
+                                        @endforeach
+                                    </ul>
                                 </div>
+                            @endif
+                            <!-- End Error Message -->
+                            <div class="col-lg-12 loginbttm">
                                 <div class="col-lg-7 login-btm login-button">
                                     <button type="submit" class="btn btn-outline-primary">ĐĂNG NHẬP</button>
                                 </div>
@@ -174,4 +180,4 @@
                 <div class="col-lg-3 col-md-2"></div>
             </div>
         </div>
-
+    </div>
