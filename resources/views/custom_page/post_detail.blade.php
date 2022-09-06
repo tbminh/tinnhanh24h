@@ -19,9 +19,10 @@
                         <h3> {{$get_detail->title}} </h3>
 
                         <div class="blog-meta big-meta">
+                            
                             <small><a href="tech-single.html" title="">21 July, 2017</a></small>
                             <small><a href="tech-author.html" title="">by Jessica</a></small>
-                            <small><a href="#" title=""><i class="fa fa-eye"></i> 2344</a></small>
+                            <small><a href="#" title=""><i class="fa fa-eye"></i> 2344 </a></small>
                         </div><!-- end meta -->
 
                         <div class="post-sharing">
@@ -77,10 +78,11 @@
                     <div class="blog-title-area">
                         <div class="tag-cloud-single">
                             <span>Tags</span>
-                            <small><a href="#" title="">lifestyle</a></small>
-                            <small><a href="#" title="">colorful</a></small>
-                            <small><a href="#" title="">trending</a></small>
-                            <small><a href="#" title="">another tag</a></small>
+                            @php($cate = DB::table('categories')->get())
+                            @foreach ($cate as $data)
+                                <small><a href="{{ url('list-post/'.$data->id) }}">{{ $data->cate_name }}</a></small>
+                            @endforeach
+                            
                         </div><!-- end meta -->
 
                         <div class="post-sharing">
@@ -270,7 +272,7 @@
                             <div class="list-group">
                                 <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
                                     <div class="w-100 justify-content-between">
-                                        <img src="upload/tech_blog_08.jpg" alt="" class="img-fluid float-left">
+                                        <img src="{{ url('public/upload/tech_blog_08.jpg') }}" class="img-fluid float-left">
                                         <h5 class="mb-1">5 Beautiful buildings you need..</h5>
                                         <small>12 Jan, 2016</small>
                                     </div>
@@ -299,9 +301,9 @@
                         <h2 class="widget-title">Recent Reviews</h2>
                         <div class="blog-list-widget">
                             <div class="list-group">
-                                <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                                     <div class="w-100 justify-content-between">
-                                        <img src="upload/tech_blog_02.jpg" alt="" class="img-fluid float-left">
+                                        <img src="{{ url('public/upload/tech_blog_02.jpg') }}" alt="" class="img-fluid float-left">
                                         <h5 class="mb-1">Banana-chip chocolate cake recipe..</h5>
                                         <span class="rating">
                                             <i class="fa fa-star"></i>
@@ -312,7 +314,6 @@
                                         </span>
                                     </div>
                                 </a>
-
                                 <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
                                     <div class="w-100 justify-content-between">
                                         <img src="upload/tech_blog_03.jpg" alt="" class="img-fluid float-left">

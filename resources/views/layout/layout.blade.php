@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Site Metas -->
-    <title>Tech Blog - Stylish Magazine Blog Template</title>
+    <title>Tech Blog - Tin Tức Công Nghệ</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -49,7 +49,7 @@
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="tech-index.html"><img src=" {{url('public/images/version/tech-logo.png')}} " alt=""></a>
+                    <a class="navbar-brand" href="{{url('/')}}"><img src=" {{url('public/images/version/tech-logo.png')}} " alt=""></a>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
@@ -428,7 +428,7 @@
                                 <a class="nav-link" href="tech-category-03.html">Về Chúng Tôi</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('page-contact') }}">Liên Hệ</a>
+                                <a class="nav-link" href="{{ url('page-contact') }}">Phản Hồi</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav mr-2">
@@ -526,11 +526,16 @@
                                     <div class="form-group">
                                         <input type="number" class="form-control" name="phone" id="phone" placeholder="Nhập số điện thoại...">
                                     </div>
-                                    <div class="form-check">
-                                        <label for="" style="display: inline;">Giới tính</label>
-                                        <input type="radio" class="form-control" name="gender" id="male" value="0"> Nam
-                                        <input type="radio" class="form-control" name="gender" id="female" value="1"> Nữ
-                                    </div>
+                                    <div class="form-group">
+                                        <label for="" style="float: left;"><b style="margin-right: 100px;">Giới tính:</b>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="gender" id="male" value="0">Nam
+                                            </label> &emsp;
+                                            <label class="radio-inline">
+                                                <input type="radio" name="gender" id="female" value="1">Nữ
+                                            </label>
+                                        </label>
+                                    </div><br/>
                                     <div class="form-check">
                                         <label for="">Hình ảnh</label>
                                         <input type="file" class="form-control-file" name="inputFileImage">
@@ -569,7 +574,7 @@
                          if(result.status == 0)
                          {
                              jQuery('.alert-danger').html('');
-        
+
                              jQuery.each(result.errors, function(key, val){
                                  jQuery('.alert-danger').show();
                                  jQuery('.alert-danger').append('<li>'+val[0]+'</li>');
@@ -667,8 +672,5 @@
     <script src="{{asset('public/js/tether.min.js')}}"></script>
     <script src="{{asset('public/js/bootstrap.min.js')}}"></script>
     <script src=" {{asset('public/js/custom.js')}} "></script>
-    
 </body>
-
-
 </html>

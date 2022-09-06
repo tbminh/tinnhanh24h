@@ -1,84 +1,44 @@
 @extends('layout.layout')
 @section('content')
-    
+
 <section class="section first-section">
     <div class="container-fluid">
         <div class="masonry-blog clearfix">
-            <div class="first-slot">
-                <div class="masonry-box post-media">
-                     <img src="public/upload/tech_01.jpg" alt="" class="img-fluid">
-                     <div class="shadoweffect">
-                        <div class="shadow-desc">
-                            <div class="blog-meta">
-                                <span class="bg-orange"><a href="tech-category-01.html" title="">Technology</a></span>
-                                <h4><a href="tech-single.html" title="">Say hello to real handmade office furniture! Clean & beautiful design</a></h4>
-                                <small><a href="tech-single.html" title="">24 July, 2017</a></small>
-                                <small><a href="tech-author.html" title="">by Amanda</a></small>
-                            </div><!-- end meta -->
-                        </div><!-- end shadow-desc -->
-                    </div><!-- end shadow -->
-                </div><!-- end post-media -->
-            </div><!-- end first-side -->
-
-            <div class="second-slot">
-                <div class="masonry-box post-media">
-                     <img src="public/upload/tech_02.jpg" alt="" class="img-fluid">
-                     <div class="shadoweffect">
-                        <div class="shadow-desc">
-                            <div class="blog-meta">
-                                <span class="bg-orange"><a href="tech-category-01.html" title="">Gadgets</a></span>
-                                <h4><a href="tech-single.html" title="">Do not make mistakes when web hosting</a></h4>
-                                <small><a href="tech-single.html" title="">03 July, 2017</a></small>
-                                <small><a href="tech-author.html" title="">by Jessica</a></small>
-                            </div><!-- end meta -->
-                        </div><!-- end shadow-desc -->
-                     </div><!-- end shadow -->
-                </div><!-- end post-media -->
-            </div><!-- end second-side -->
-
-            <div class="last-slot">
-                <div class="masonry-box post-media">
-                     <img src="public/upload/tech_03.jpg" alt="" class="img-fluid">
-                     <div class="shadoweffect">
-                        <div class="shadow-desc">
-                            <div class="blog-meta">
-                                <span class="bg-orange"><a href="tech-category-01.html" title="">Technology</a></span>
-                                <h4><a href="tech-single.html" title="">The most reliable Galaxy Note 8 images leaked</a></h4>
-                                <small><a href="tech-single.html" title="">01 July, 2017</a></small>
-                                <small><a href="tech-author.html" title="">by Jessica</a></small>
-                            </div><!-- end meta -->
-                        </div><!-- end shadow-desc -->
-                     </div><!-- end shadow -->
-                </div><!-- end post-media -->
-            </div><!-- end second-side -->
+{{--            <div class="first-slot">--}}
+{{--                <div class="masonry-box post-media">--}}
+{{--                     <img src="{{ url('public/upload/'.$first_slide->image) }}" alt="" class="img-fluid">--}}
+{{--                     <div class="shadoweffect">--}}
+{{--                        <div class="shadow-desc">--}}
+{{--                            <div class="blog-meta">--}}
+{{--                                <span class="bg-orange"><a href="#" title="">{{  $first_slide->cate_name }}</a></span>--}}
+{{--                                <h4><a href="{{ url('post-detail/'.$first_slide->id) }}" title="">{{ $first_slide->title }}</a></h4>--}}
+{{--                                <small><a href="{{ url('post-detail/'.$first_slide->id) }}" title="">24 July, 2017</a></small>--}}
+{{--                                <small><a href="{{ url('post-detail/'.$first_slide->id) }}" title="">by {{ $first_slide->full_name }}</a></small>--}}
+{{--                            </div><!-- end meta -->--}}
+{{--                        </div><!-- end shadow-desc -->--}}
+{{--                    </div><!-- end shadow -->--}}
+{{--                </div><!-- end post-media -->--}}
+{{--            </div><!-- end first-side -->--}}
+{{--            @php($get_sliders = DB::table('posts')->orderBy('id','desc')->take(4)->get())--}}
+            @foreach($first_slide as $data)
+                <div class="second-slot">
+                    <div class="masonry-box post-media">
+                        <img src="{{ url('public/upload/'.$data->image) }}" alt="" class="img-fluid">
+                        <div class="shadoweffect">
+                            <div class="shadow-desc">
+                                <div class="blog-meta">
+                                    <span class="bg-orange"><a href="#" title="">{{$data->cate_name}}</a></span>
+                                    <h4><a href="#" title="">{{$data->title}}</a></h4>
+                                    <small><a href="#" title="">{{$data->created_at->format('d M 20y')}}</a></small>
+                                    <small><a href="#" title="">by {{$data->full_name}}</a></small>
+                                </div><!-- end meta -->
+                            </div><!-- end shadow-desc -->
+                        </div><!-- end shadow -->
+                    </div><!-- end post-media -->
+                </div><!-- end second-side -->
+            @endforeach
         </div><!-- end masonry -->
     </div>
-    {{-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" style="height: 500px;">
-          <div class="carousel-item active">
-            <img class="d-block w-100" src="public/upload/tech_03.jpg" alt="First slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="public/upload/tech_03.jpg" alt="Second slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="public/upload/tech_03.jpg" alt="Third slide">
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div> --}}
 </section>
 
 <section class="section">
@@ -112,37 +72,17 @@
                         </div><!-- end blog-box -->
 
                         <hr class="invis">
-                        <div class="row">
-                            <div class="col-lg-10 offset-lg-1">
-                                <div class="banner-spot clearfix">
-                                    <div class="banner-img">
-                                        <img src="public/upload/banner_01.jpg" alt="" class="img-fluid">
-                                    </div><!-- end banner-img -->
-                                </div><!-- end banner -->
-                            </div><!-- end col -->
-                        </div><!-- end row -->
+{{--                        <div class="row">--}}
+{{--                            <div class="col-lg-10 offset-lg-1">--}}
+{{--                                <div class="banner-spot clearfix">--}}
+{{--                                    <div class="banner-img">--}}
+{{--                                        <img src="public/upload/banner_01.jpg" alt="" class="img-fluid">--}}
+{{--                                    </div><!-- end banner-img -->--}}
+{{--                                </div><!-- end banner -->--}}
+{{--                            </div><!-- end col -->--}}
+{{--                        </div><!-- end row -->--}}
+{{--                        <hr class="invis">--}}
 
-                        <hr class="invis">
-
-                        <div class="blog-box row">
-                            <div class="col-md-4">
-                                <div class="post-media">
-                                    <a href="tech-single.html" title="">
-                                        <img src="public/upload/tech_blog_10.jpg" alt="" class="img-fluid">
-                                        <div class="hovereffect"></div>
-                                    </a>
-                                </div><!-- end media -->
-                            </div><!-- end col -->
-
-                            <div class="blog-meta big-meta col-md-8">
-                                <h4><a href="tech-single.html" title="">Google has developed a brand new algorithm. Forget all your knowledge!</a></h4>
-                                <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">Gadgets</a></small>
-                                <small><a href="tech-single.html" title="">13 July, 2017</a></small>
-                                <small><a href="tech-author.html" title="">by Matilda</a></small>
-                                <small><a href="tech-single.html" title=""><i class="fa fa-eye"></i> 3331</a></small>
-                            </div><!-- end meta -->
-                        </div><!-- end blog-box -->
                     </div><!-- end blog-list -->
                 </div><!-- end page-wrapper -->
 
@@ -288,7 +228,7 @@
                         </div>
                     </div><!-- end widget -->
 
-                    
+
                 </div><!-- end sidebar -->
             </div><!-- end col -->
         </div><!-- end row -->

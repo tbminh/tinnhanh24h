@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Dotenv\Exception\ValidationException;
@@ -16,7 +17,12 @@ class HomeConTroller extends Controller
 {
     public function index()
     {
-        return view('custom_page.index');
+        $first_slide = Category::join('posts', 'categories.id', '=', 'posts.cate_id')
+            ->join('users', 'users.id', "=", 'posts.author')
+            ->orderBy('posts.id', 'DESC')
+            ->take(4)
+            ->get(['categories.cate_name', 'posts.title', 'posts.image', 'posts.id', 'users.full_name','posts.created_at']);
+        return view('custom_page.index', ['first_slide' => $first_slide]);
     }
 
     public function add_user(Request $request)

@@ -31,11 +31,13 @@ class AdminController extends Controller
                 ]
             );
         } catch (ValidationException $e) {
-            if (Auth::attempt(['email' => $email, 'password' => $password, 'role_id' => 1])) {
-                return redirect('page-admin');
-            } else if (Auth::attempt(['email' => $email, 'password' => $password, 'role_id' => 2])) {
-                return redirect('page-admin');
-            }
+        }
+        if (Auth::attempt(['email' => $email, 'password' => $password, 'role_id' => 1])) {
+            return redirect('page-admin');
+        } else if (Auth::attempt(['email' => $email, 'password' => $password, 'role_id' => 2])) {
+            return redirect('page-admin');
+        } else {
+            return redirect('page-login-admin');
         }
     }
     public function logout_admin()
