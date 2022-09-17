@@ -21,8 +21,18 @@ class HomeConTroller extends Controller
             ->join('users', 'users.id', "=", 'posts.author')
             ->orderBy('posts.id', 'DESC')
             ->take(4)
-            ->get(['categories.cate_name', 'posts.title', 'posts.image', 'posts.id', 'users.full_name','posts.created_at']);
-        return view('custom_page.index', ['first_slide' => $first_slide]);
+            ->get(['categories.cate_name', 'posts.title', 'posts.image', 'posts.id', 'users.full_name', 'posts.created_at']);
+
+        $get_news = Category::join('posts', 'categories.id', '=', 'posts.cate_id')
+            ->join('users', 'users.id', "=", 'posts.author')
+            ->select(['categories.cate_name', 'posts.title', 'posts.image', 'posts.id', 'users.full_name', 'posts.created_at', 'posts.content', 'posts.view'])
+            ->orderBy('posts.id', 'DESC')
+            ->limit(5)
+            ->paginate(3);
+        return view('custom_page.index', [
+            'first_slide' => $first_slide,
+            'get_news' => $get_news
+        ]);
     }
 
     public function add_user(Request $request)

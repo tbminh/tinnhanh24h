@@ -51,68 +51,37 @@
                     </div><!-- end blog-top -->
 
                     <div class="blog-list clearfix">
-                        <div class="blog-box row">
-                            <div class="col-md-4">
-                                <div class="post-media">
-                                    <a href="tech-single.html" title="">
-                                        <img src="public/upload/tech_blog_01.jpg" alt="" class="img-fluid">
-                                        <div class="hovereffect"></div>
-                                    </a>
-                                </div><!-- end media -->
-                            </div><!-- end col -->
+                        @foreach($get_news as $key => $data)
+                            <div class="blog-box row">
+                                <div class="col-md-4">
+                                    <div class="post-media">
+                                        <a href="{{ url('post-detail/'.$data->id) }}" title="{{ $data->title }}">
+                                            <img src="{{ url('public/upload/'.$data->image) }}" class="img-fluid">
+                                            <div class="hovereffect"></div>
+                                        </a>
+                                    </div><!-- end media -->
+                                </div><!-- end col -->
 
-                            <div class="blog-meta big-meta col-md-8">
-                                <h4><a href="tech-single.html" title="">Top 10 phone applications and 2017 mobile design awards</a></h4>
-                                <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">Gadgets</a></small>
-                                <small><a href="tech-single.html" title="">21 July, 2017</a></small>
-                                <small><a href="tech-author.html" title="">by Matilda</a></small>
-                                <small><a href="tech-single.html" title=""><i class="fa fa-eye"></i> 1114</a></small>
-                            </div><!-- end meta -->
-                        </div><!-- end blog-box -->
-
-                        <hr class="invis">
-{{--                        <div class="row">--}}
-{{--                            <div class="col-lg-10 offset-lg-1">--}}
-{{--                                <div class="banner-spot clearfix">--}}
-{{--                                    <div class="banner-img">--}}
-{{--                                        <img src="public/upload/banner_01.jpg" alt="" class="img-fluid">--}}
-{{--                                    </div><!-- end banner-img -->--}}
-{{--                                </div><!-- end banner -->--}}
-{{--                            </div><!-- end col -->--}}
-{{--                        </div><!-- end row -->--}}
-{{--                        <hr class="invis">--}}
-
+                                <div class="blog-meta big-meta col-md-8">
+                                    <h4><a href="{{ url('post-detail/'.$data->id) }}">{{ $data->title }}</a></h4>
+                                    <p>{{substr($data->content,0,100)."....."}}</p>
+                                    <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">{{ $data->cate_name }}</a></small>
+                                    <small><a href="tech-single.html" title="">{{$data->created_at->format('d M 20y')}}</a></small>
+                                    <small><a href="tech-author.html" title="">by {{ $data->full_name }}</a></small>
+                                    <small><a href="tech-single.html" title=""><i class="fa fa-eye"></i> {{ $data->view }}</a></small>
+                                </div><!-- end meta -->
+                            </div><!-- end blog-box -->
+                            <br>
+                        @endforeach
                     </div><!-- end blog-list -->
                 </div><!-- end page-wrapper -->
 
                 <hr class="invis">
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination justify-content-start">
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div><!-- end col -->
-                </div><!-- end row -->
+                {{$get_news->links('layout.my-paginate')}}
             </div><!-- end col -->
 
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                 <div class="sidebar">
-                    <div class="widget">
-                        <div class="banner-spot clearfix">
-                            <div class="banner-img">
-                                <img src="public/upload/banner_07.jpg" alt="" class="img-fluid">
-                            </div><!-- end banner-img -->
-                        </div><!-- end banner -->
-                    </div><!-- end widget -->
 
                     <div class="widget">
                         <h2 class="widget-title">Popular Posts</h2>
