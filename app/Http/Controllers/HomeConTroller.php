@@ -58,24 +58,6 @@ class HomeConTroller extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'errors' => $validator->errors()->toArray()]);
         }
-        // else {
-        //     $add_user = new User();
-        //     $add_user->role_id = 3;
-        //     $add_user->full_name = $request->input('fullname');
-        //     $add_user->email = $request->input('email');
-        //     $add_user->password = bcrypt($request->input('password'));
-        //     $add_user->gender = $request->input('gender');
-        //     $add_user->phone_number = $request->input('phone');
-
-        //     if ($request->hasFile('inputFileImage')) {
-        //         $image = $request->file('inputFileImage');
-        //         $image_name = $image->getClientOriginalName();
-        //         $image->move(public_path('public/upload'), $image_name);
-        //         $add_user->avatar = $image_name;
-        //     }
-        //     $add_user->save();
-        //     return redirect()->back()->with('alert', 'Đăng ký thành công');
-        // }
     }
     //Kiểm tra đăng nhập
     public function post_login(Request $request)
