@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
+use Carbon\Carbon;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -27,11 +28,16 @@ class HomeConTroller extends Controller
             ->join('users', 'users.id', "=", 'posts.author')
             ->select(['categories.cate_name', 'posts.title', 'posts.image', 'posts.id', 'users.full_name', 'posts.created_at', 'posts.content', 'posts.view'])
             ->orderBy('posts.id', 'DESC')
-            ->limit(5)
+            ->skip(4)
+            ->take(4)
             ->paginate(3);
+            //Popular post => get month present to show largest view
+        $now = Carbon::now();
+        $populars = DB::table('posts')->orderBy('view','desc')->take(3)->get();
         return view('custom_page.index', [
             'first_slide' => $first_slide,
-            'get_news' => $get_news
+            'get_news' => $get_news,
+            'populars'=>$populars
         ]);
     }
 
