@@ -83,28 +83,21 @@
 
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                 <div class="sidebar">
-
                     <div class="widget">
-                        <h2 class="widget-title">Bài viết phổ biến</h2>
-                        <div class="blog-list-widget">
-                            <div class="list-group">
-                                @foreach ($populars as $data)
-                                    <a href="{{ url("post-detail/".$data->id) }}" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <h2 class="widget-title">Popular Posts</h2>
+                        @foreach ($populars as $data)
+                            <div class="blog-list-widget">
+                                <div class="list-group">
+                                    <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
                                         <div class="w-100 justify-content-between">
-                                            <img src="{{ url('public/upload/'.$data->image) }}" title="{{ $data->title }}"  class="img-fluid float-left">
-                                            <h5 class="mb-1">
-                                                @if (strlen($data->title > 10))
-                                                    {{ substr($data->title,0,50)."....." }}
-                                                @else 
-                                                    {{ $data->title }}
-                                                @endif
-                                            </h5>
-                                            <small>{{ $data->created_at }}</small>
+                                        <img src="{{ url('public/upload/'.$data->image) }}" class="img-fluid float-left">
+                                            <h5 class="mb-1">{{ $data->title }}</h5>
+                                            <small>{{$data->created_at}}</small>
                                         </div>
                                     </a>
-                                @endforeach
-                            </div>
-                        </div><!-- end blog-list -->
+                                </div>
+                            </div><!-- end blog-list -->
+                        @endforeach
                     </div><!-- end widget -->
 
                     <div class="widget">
