@@ -33,7 +33,7 @@ Route::post('post-feedback', [HomeController::class, 'post_feedback'])->name('po
 Route::get('page-login-admin', function () {
     return view('admin_page.page_login_admin');
 });
-Route::post('post-login', [AdminController::class, 'post_login']);
+Route::post('post-login-admin', [AdminController::class, 'post_login']);
 Route::get('logout-admin', [AdminController::class, 'logout_admin']);
 
 Route::middleware([CheckLogin::class])->group(function () {

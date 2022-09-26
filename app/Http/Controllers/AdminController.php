@@ -14,7 +14,7 @@ use Illuminate\Routing\Route;
 
 class AdminController extends Controller
 {
-    public function post_login(Request $request)
+    public function post_login_admin(Request $request)
     {
         $email = $request->input('inputEmail');
         $password = $request->input('inputPass');

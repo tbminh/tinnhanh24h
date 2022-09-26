@@ -148,7 +148,7 @@
 
                 <div class="col-lg-12 login-form">
                     <div class="col-lg-12 login-form">
-                        <form action=" {{url('post-login')}}" method="POST">
+                        <form action=" {{url('post-login-admin')}}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label class="form-control-label">EMAIL</label>

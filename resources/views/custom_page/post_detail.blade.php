@@ -1,6 +1,6 @@
 @extends('layout.layout')
 @section('content')
-
+{{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
 <section class="section single-wrapper">
     <div class="container">
         <div class="row">
@@ -19,7 +19,6 @@
                         <h3> {{$get_detail->title}} </h3>
 
                         <div class="blog-meta big-meta">
-                            
                             <small><a href="tech-single.html" title="">21 July, 2017</a></small>
                             <small><a href="tech-author.html" title="">by Jessica</a></small>
                             <small><a href="#" title=""><i class="fa fa-eye"></i> 2344 </a></small>
@@ -27,7 +26,7 @@
 
                         <div class="post-sharing">
                             <ul class="list-inline">
-                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
+                                <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&display=popup" target="_blank" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
                                 <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
                                 <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
                             </ul>
@@ -43,7 +42,6 @@
                             <p> {{ $get_detail->content }} </p>
 
                         </div><!-- end pp -->
-
 
                         {{-- <div class="pp">
                             <h3><strong>Nam non velit est. Sed lobortis arcu vitae nunc molestie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </strong></h3>
@@ -85,13 +83,16 @@
                             
                         </div><!-- end meta -->
 
-                        <div class="post-sharing">
+                        {{-- <div class="post-sharing">
                             <ul class="list-inline">
                                 <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
                                 <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
                                 <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
+                                <div id="fb-root"></div>
+                                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v15.0&appId=4786925174735123&autoLogAppEvents=1" nonce="ZbATmirA"></script>3
+                                <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
                             </ul>
-                        </div><!-- end post-sharing -->
+                        </div> --}}
                     </div><!-- end title -->
 
                     <div class="row">
@@ -113,7 +114,7 @@
                                     <div class="list-group">
                                         <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between text-right">
-                                                {{-- <img src=" {{url('public/upload/'.$get_detail->image)}} " alt="" class="img-fluid float-right"> --}}
+                                                <img src=" {{url('public/upload/tech_menu_20.jpg')}} " alt="" class="img-fluid float-right">
                                                 <h5 class="mb-1">5 Beautiful buildings you need to before dying</h5>
                                                 <small>Prev Post</small>
                                             </div>

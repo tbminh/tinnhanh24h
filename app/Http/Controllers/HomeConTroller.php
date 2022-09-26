@@ -21,17 +21,17 @@ class HomeConTroller extends Controller
             ->join('users', 'users.id', "=", 'posts.author')
             ->orderBy('posts.id', 'DESC')
             ->take(4)
-            ->get(['categories.cate_name', 'posts.title', 'posts.image', 'posts.id', 'users.full_name', 'posts.created_at']);
-
+            ->get(['categories.cate_name', 'posts.title', 'posts.image', 'posts.id', 'users.full_name', 'posts.created_at', 'posts.cate_id']);
         $get_news = Category::join('posts', 'categories.id', '=', 'posts.cate_id')
             ->join('users', 'users.id', "=", 'posts.author')
-            ->select(['categories.cate_name', 'posts.title', 'posts.image', 'posts.id', 'users.full_name', 'posts.created_at', 'posts.content', 'posts.view'])
+            ->select(['categories.cate_name', 'posts.title', 'posts.image', 'posts.id', 'users.full_name', 'posts.created_at', 'posts.content', 'posts.view', 'posts.cate_id'])
             ->orderBy('posts.id', 'DESC')
-            ->limit(5)
-            ->paginate(3);
+            ->paginate(4);
+        $populars = DB::table('posts')->orderByDesc('view')->take(3)->get();
         return view('custom_page.index', [
             'first_slide' => $first_slide,
-            'get_news' => $get_news
+            'get_news' => $get_news,
+            'populars' => $populars
         ]);
     }
 
@@ -54,10 +54,24 @@ class HomeConTroller extends Controller
                 'phone.require' => 'Vui lòng nhập số điện thoại'
             ]
         );
-
+        $add_user = new User();
+        $add_user->role_id = 3;
+        $add_user->email = $request->input('email');
+        $add_user->password = bcrypt($request->input('password'));
+        $add_user->full_name = $request->input('full_name');
+        $add_user->gender = $request->input('gender');
+        $add_user->phone_number = $request->input('phone');
+        if ($request->hasFile('inputFileImage')) {
+            $image = $request->file('inputFileImage');
+            $image_name = $image->getClientOriginalName();
+            $image->move(public_path('public/upload'), $image_name);
+            $add_user->avatar = $image_name;
+        }
+        $add_user->save();
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'errors' => $validator->errors()->toArray()]);
         }
+        return redirect()->back()->with('alert', 'Đăng ký thành công');
     }
     //Kiểm tra đăng nhập
     public function post_login(Request $request)
@@ -83,6 +97,11 @@ class HomeConTroller extends Controller
     {
         $get_detail = DB::table('posts')->where('id', $id)->first();
         $get_cate = DB::table('categories')->where('id', $get_detail->cate_id)->first();
+
+        $update_view = Post::find($id);
+        $update_view->view = $update_view->view + 1;
+        $update_view->save();
+
         return view('custom_page.post_detail', [
             'get_detail' => $get_detail,
             'get_cate' => $get_cate
@@ -107,9 +126,7 @@ class HomeConTroller extends Controller
     {
         $getInfo = Socialite::driver($provider)->user();
         $user = $this->createUser($getInfo, $provider);
-
         auth()->login($user);
-
         return redirect()->to('/');
     }
 

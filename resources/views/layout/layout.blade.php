@@ -436,11 +436,11 @@
                                 <li class="nav-item">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fa fa-user"></i>  {{ Auth::user()->full_name}}
+                                            <i class="fa fa-user"></i>  {{ Auth::User()->full_name}}
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="#"><i class="fa fa-info"></i>  Thông Tin Cá Nhân</a>
-                                            <a class="dropdown-item" href="{{url('logout')}}"><i class="fa fa-sign-out"></i>Đăng Xuất</a>
+                                            <a class="dropdown-item" href="{{ url('logout') }}"><i class="fa fa-sign-out"></i>Đăng Xuất</a>
                                         </div>
                                     </div>
                                 </li>
@@ -618,14 +618,14 @@
 
                     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                         <div class="widget">
-                            <h2 class="widget-title">Popular Categories</h2>
+                            <h2 class="widget-title">Loại tin tức</h2>
                             <div class="link-widget">
                                 <ul>
-                                    <li><a href="#">Marketing <span>(21)</span></a></li>
-                                    <li><a href="#">SEO Service <span>(15)</span></a></li>
-                                    <li><a href="#">Digital Agency <span>(31)</span></a></li>
-                                    <li><a href="#">Make Money <span>(22)</span></a></li>
-                                    <li><a href="#">Blogging <span>(66)</span></a></li>
+                                    @php($get_cate = DB::table('categories')->get())
+                                    @foreach ($get_cate as $data)
+                                        @php($qty = DB::table('posts')->where('cate_id',$data->id)->count())
+                                        <li><a href="{{ url('list-post/'.$data->id) }}">{{ $data->cate_name }} <span>({{ $qty }})</span></a></li>
+                                    @endforeach
                                 </ul>
                             </div><!-- end link-widget -->
                         </div><!-- end widget -->

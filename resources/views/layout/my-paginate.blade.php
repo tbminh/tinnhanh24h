@@ -23,7 +23,7 @@
 
                         {{-- Array Of Links --}}
                         @if (is_array($element))
-                            @foreach ($element as $page => $url)
+                            @foreach($element as $page => $url)
                                 @if ($page == $paginator->currentPage())
                                     <li class="active page-item" aria-current="page"><span class="page-link">{{ $page }}</span></li>
                                 @else
