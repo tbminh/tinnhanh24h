@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Site Metas -->
-    <title>Tech Blog - Tin Tức Công Nghệ</title>
+    <title>@yield('title')</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -439,7 +439,7 @@
                                             <i class="fa fa-user"></i>  {{ Auth::User()->full_name}}
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#"><i class="fa fa-info"></i>  Thông Tin Cá Nhân</a>
+                                            <a class="dropdown-item" href="{{ url('profile-info/'.Auth::id()) }}"><i class="fa fa-info"></i>  Thông Tin Cá Nhân</a>
                                             <a class="dropdown-item" href="{{ url('logout') }}"><i class="fa fa-sign-out"></i>Đăng Xuất</a>
                                         </div>
                                     </div>

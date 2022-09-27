@@ -174,4 +174,9 @@ class HomeConTroller extends Controller
             return redirect()->back()->with("alert", "Email đã được gửi!");
         }
     }
+
+    public function profile_info($id)
+    {
+        return view('custom_page.profile_info');
+    }
 }

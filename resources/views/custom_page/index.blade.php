@@ -1,4 +1,5 @@
 @extends('layout.layout')
+@section('title','TechBlog tin tức công nghệ')
 @section('content')
 
 <section class="section first-section">
@@ -151,7 +152,6 @@
 
                     <div class="widget">
                         <h2 class="widget-title">Tương tác với chúng tôi</h2>
-
                         <div class="row text-center">
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                 <a href="#" class="social-button facebook-button">
@@ -182,12 +182,9 @@
                             </div>
                         </div>
                     </div><!-- end widget -->
-
-
                 </div><!-- end sidebar -->
             </div><!-- end col -->
         </div><!-- end row -->
     </div><!-- end container -->
 </section>
-
 @endsection
