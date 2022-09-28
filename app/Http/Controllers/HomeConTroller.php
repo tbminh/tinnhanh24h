@@ -102,7 +102,6 @@ class HomeConTroller extends Controller
         $update_view = Post::find($id);
         $update_view->view = $update_view->view + 1;
         $update_view->save();
-
         return view('custom_page.post_detail', [
             'get_detail' => $get_detail,
             'get_cate' => $get_cate
@@ -178,5 +177,36 @@ class HomeConTroller extends Controller
     public function profile_info($id)
     {
         return view('custom_page.profile_info');
+    }
+
+    public function change_profile(Request $request, $id)
+    {
+        $old_pass = $request->input('inputOld');
+        $new_pass = $request->input('inputNew');
+        $confirm = $request->input('inputConfirm');
+        $update_profile = User::find($id);
+        if ($old_pass != "" && $new_pass != "" && $confirm != "") {
+            if ($new_pass != $confirm) {
+                return redirect()->back()->with('alert', 'Xác nhận mật khẩu không đúng');
+            } else if ($old_pass != $update_profile->password) {
+                return redirect()->back()->with('alert', 'Mật khẩu cũ không đúng');
+            } else {
+                $update_profile->password = $new_pass;
+            }
+        }
+        $update_profile->full_name = $request->input('inputName');
+        $update_profile->email = $request->input('inputEmail');
+        $update_profile->phone_number = $request->input('inputPhone');
+        $update_profile->gender = $request->input('inputGender');
+
+        if ($request->hasFile('inputFileImage')) {
+            $image = $request->file('inputFileImage');
+            $image_name = $image->getClientOriginalName();
+            $image->move(public_path('public/upload'), $image_name);
+            $update_profile->avatar = $image_name;
+        }
+        $update_profile->save();
+
+        return redirect()->back()->with('alert', 'Cập nhật thành công');
     }
 }

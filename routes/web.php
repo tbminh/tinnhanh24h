@@ -24,6 +24,7 @@ Route::get('/page-contact', [HomeConTroller::class, 'page_contact']);
 Route::get('/post-detail/{id}', [HomeConTroller::class, 'post_detail']);
 Route::get('list-post/{id}', [HomeController::class, 'list_post']);
 Route::get('profile-info/{id}', [HomeController::class, 'profile_info']);
+Route::put('change-profile/{id}', [HomeController::class, 'change_profile']);
 // Đăng nhập google
 Route::get('auth/redirect/{provider}', [HomeController::class, 'redirect']);
 Route::get('callback/{provider}', [HomeController::class, 'callback']);

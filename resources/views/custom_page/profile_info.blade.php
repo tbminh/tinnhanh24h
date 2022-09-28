@@ -68,22 +68,24 @@
     <!-- Account page navigation-->
     <br>
     <hr class="mt-0 mb-4">
-    <form action="">
+    <form action="{{ url('change-profile/'.Auth::id()) }}" method="POST">
+        @method('PUT')
+        @csrf
         <div class="row">
             <div class="col-xl-4">
                 <!-- Profile picture card-->
                 <div class="card mb-4 mb-xl-0">
-                    <div class="card-header">Profile Picture</div>
+                    <div class="card-header">Ảnh đại diện</div>
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
-                        <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                        <img class="img-account-profile rounded-circle mb-2" src="{{ url('public/upload/'.Auth::user()->avatar) }}">
                         <!-- Profile picture help block-->
-                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                        <div class="small font-italic text-muted mb-4">{{ Auth::user()->full_name }}</div>
                         <!-- Profile picture upload button-->
                         <div style="height:0px;overflow:hidden">
-                            <input type="file" id="fileInput" name="fileInput" />
+                            <input type="file" id="inputFileImage" name="inputFileImage" />
                          </div>
-                        <button class="btn btn-primary" type="button" onclick="chooseFile();">Upload new image</button>
+                        <button class="btn btn-primary" type="button" onclick="chooseFile();">Thay đổi ảnh đại diện</button>
                     </div>
                 </div>
             </div>
@@ -101,23 +103,45 @@
                             <label class="small mb-1" for="inputEmail">Email </label>
                             <input class="form-control" id="inputEmail" type="email" placeholder="Nhập email" value="{{ Auth::user()->email }}">
                         </div>
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputOld">Giới tính &emsp;&emsp;
+                                @if (Auth::user()->gender == 0)
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inputGender" id="male" value="0" checked>  Nam
+                                    </label> &emsp;
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inputGender" id="female" value="1">  Nữ
+                                    </label>
+                                @else
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inputGender" id="male" value="0">  Nam
+                                    </label> &emsp;
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inputGender" id="female" value="1" checked>  Nữ
+                                    </label>
+                                @endif
+                            </label>
+                        </div>
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputPhone">Điện Thoại</label>
+                            <input class="form-control" id="inputPhone" type="text" placeholder="Nhập địa chỉ" value="0{{ Auth::user()->phone_number }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputOld">Mật Khẩu Cũ </label>
+                            <input class="form-control" id="inputOld" type="password" placeholder="Nhập mật khẩu cũ">
+                        </div>
                         <!-- Form Row        -->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (organization name)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputOrgName">Mật Khẩu Cũ</label>
-                                <input class="form-control" id="inputOrgName" type="text" placeholder="Nhập mật khẩu cũ" >
+                                <label class="small mb-1" for="inputNew">Mật Khẩu Mới</label>
+                                <input class="form-control" id="inputNew" type="password" placeholder="Nhập mật khẩu mới" >
                             </div>
                             <!-- Form Group (location)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputLocation">Mật Khẩu Mới</label>
-                                <input class="form-control" id="inputLocation" type="text" placeholder="Nhập mật khẩu mới">
+                                <label class="small mb-1" for="inputConfirm">Xác Nhận Mật Khẩu</label>
+                                <input class="form-control" id="inputConfirm" type="password" placeholder="Xác nhận mật khẩu">
                             </div>
-                        </div>
-                        <!-- Form Group (email address)-->
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">Điện Thoại</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Nhập địa chỉ" value="0{{ Auth::user()->phone_number }}">
                         </div>
                         <!-- Save changes button-->
                         <button class="btn btn-primary" type="submit">Save changes</button>
