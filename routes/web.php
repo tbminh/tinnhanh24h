@@ -23,6 +23,7 @@ Route::get('logout', [HomeConTroller::class, 'logout']);
 Route::get('/page-contact', [HomeConTroller::class, 'page_contact']);
 Route::get('/post-detail/{id}', [HomeConTroller::class, 'post_detail']);
 Route::get('list-post/{id}', [HomeController::class, 'list_post']);
+Route::get('page-author/{id}', [HomeController::class, 'page_author']);
 Route::get('profile-info/{id}', [HomeController::class, 'profile_info']);
 Route::put('change-profile/{id}', [HomeController::class, 'change_profile']);
 // Đăng nhập google
@@ -35,7 +36,7 @@ Route::post('post-feedback', [HomeController::class, 'post_feedback'])->name('po
 Route::get('page-login-admin', function () {
     return view('admin_page.page_login_admin');
 });
-Route::post('post-login-admin', [AdminController::class, 'post_login']);
+Route::post('post-login-admin', [AdminController::class, 'post_login_admin']);
 Route::get('logout-admin', [AdminController::class, 'logout_admin']);
 
 Route::middleware([CheckLogin::class])->group(function () {

@@ -1,6 +1,6 @@
 @extends('layout.layout')
 @section('content')
-
+<script src="//cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
 <div class="page-title lb single-wrapper">
     <div class="container">
         <div class="row">
@@ -39,8 +39,8 @@
                                 <input type="text" class="form-control" name="inputName" placeholder="Tên của bạn">
                                 <input type="text" class="form-control" name="inputEmail" placeholder="Email">
                                 <input type="text" class="form-control" name="inputPhone" placeholder="Điện thoại">
-                                <input type="text" class="form-control" name="inputTitle" placeholder="Tiêu Đề">
-                                <textarea class="form-control" name="inputText" placeholder="Nhập nội dung..."></textarea>
+                                <input type="text" class="form-control" name="inputTitle" placeholder="Tiêu Đề">     
+                                <textarea name="inputText" id="editor1" rows="10" cols="80"></textarea>
                                 <button type="submit" class="btn btn-primary">Gửi <i class="fa fa-envelope-open-o"></i></button>
                             </form>
                         </div>
@@ -50,5 +50,9 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </section>
-
+<script>
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace( 'inputText' );
+</script>
 @endsection

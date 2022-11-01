@@ -33,7 +33,7 @@
                                     </span>
                                     <h4><a href="{{ url('post-detail/'.$data->id) }}" title="">{{$data->title}}</a></h4>
                                     <small><a href="#" title="">{{$data->created_at->format('d M 20y')}}</a></small>
-                                    <small><a href="#" title="">by {{$data->full_name}}</a></small>
+                                    <small><a href="{{ url('page-author/'.$data->author) }}" title="">by {{$data->full_name}}</a></small>
                                 </div><!-- end meta -->
                             </div><!-- end shadow-desc -->
                         </div><!-- end shadow -->
@@ -68,9 +68,9 @@
                                     <h4><a href="{{ url('post-detail/'.$data->id) }}">{{ $data->title }}</a></h4>
                                     <p>{{substr($data->content,0,100)."....."}}</p>
                                     <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">{{ $data->cate_name }}</a></small>
-                                    <small><a href="tech-single.html" title="">{{$data->created_at->format('d M 20y')}}</a></small>
-                                    <small><a href="tech-author.html" title="">by {{ $data->full_name }}</a></small>
-                                    <small><a href="tech-single.html" title=""><i class="fa fa-eye"></i> {{ $data->view }}</a></small>
+                                    <small><a href="#" title="">{{$data->created_at->format('d M 20y')}}</a></small>
+                                    <small><a href="{{ url('page-author/'.$data->author) }}" title="">by {{ $data->full_name }}</a></small>
+                                    <small><a href="#" title=""><i class="fa fa-eye"></i> {{ $data->view }}</a></small>
                                 </div><!-- end meta -->
                             </div><!-- end blog-box -->
                             <br>
@@ -84,7 +84,7 @@
 
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                 <div class="sidebar">
-                    <div class="widget">
+                    {{-- <div class="widget">
                         <h2 class="widget-title">Popular Posts</h2>
                         @foreach ($populars as $data)
                             <div class="blog-list-widget">
@@ -99,53 +99,26 @@
                                 </div>
                             </div><!-- end blog-list -->
                         @endforeach
-                    </div><!-- end widget -->
-
+                    </div><!-- end widget --> --}}
                     <div class="widget">
-                        <h2 class="widget-title">Bài viết gần đây</h2>
+                        <h2 class="widget-title">Bài Viết Phổ Biến</h2>
                         <div class="blog-list-widget">
                             <div class="list-group">
-                                <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="w-100 justify-content-between">
-                                        <img src="public/upload/tech_blog_02.jpg" alt="" class="img-fluid float-left">
-                                        <h5 class="mb-1">Banana-chip chocolate cake recipe..</h5>
-                                        <span class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                </a>
-
-                                <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="w-100 justify-content-between">
-                                        <img src="public/upload/tech_blog_03.jpg" alt="" class="img-fluid float-left">
-                                        <h5 class="mb-1">10 practical ways to choose organic..</h5>
-                                        <span class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                </a>
-
-                                <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="w-100 last-item justify-content-between">
-                                        <img src="public/upload/tech_blog_07.jpg" alt="" class="img-fluid float-left">
-                                        <h5 class="mb-1">We are making homemade ravioli..</h5>
-                                        <span class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                </a>
+                                @foreach ($populars as $data)
+                                    <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="w-100 justify-content-between">
+                                            <img src="{{ url('public/upload/'.$data->image) }}" class="img-fluid float-left">
+                                            <h5 class="mb-1">{{ $data->title }}</h5>
+                                            <span class="rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                        </div>
+                                    </a>
+                                @endforeach
+                                
                             </div>
                         </div><!-- end blog-list -->
                     </div><!-- end widget -->

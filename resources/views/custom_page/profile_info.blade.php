@@ -69,8 +69,8 @@
     <br>
     <hr class="mt-0 mb-4">
     <form action="{{ url('change-profile/'.Auth::id()) }}" method="POST">
-        @method('PUT')
-        @csrf
+    @method('PUT')
+    @csrf
         <div class="row">
             <div class="col-xl-4">
                 <!-- Profile picture card-->
@@ -83,7 +83,7 @@
                         <div class="small font-italic text-muted mb-4">{{ Auth::user()->full_name }}</div>
                         <!-- Profile picture upload button-->
                         <div style="height:0px;overflow:hidden">
-                            <input type="file" id="inputFileImage" name="inputFileImage" />
+                            <input class="form-control" type="file" id="inputFileImage" name="inputFileImage" />
                          </div>
                         <button class="btn btn-primary" type="button" onclick="chooseFile();">Thay đổi ảnh đại diện</button>
                     </div>
@@ -97,11 +97,11 @@
                         <!-- Form Group (username)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputName">Họ Tên: </label>
-                            <input class="form-control" id="inputName" type="text" placeholder="Nhập họ tên" value="{{ Auth::user()->full_name }}">
+                            <input class="form-control" name="inputName" type="text" placeholder="Nhập họ tên" value="{{ Auth::user()->full_name }}">
                         </div>
                         <div class="mb-3">
                             <label class="small mb-1" for="inputEmail">Email </label>
-                            <input class="form-control" id="inputEmail" type="email" placeholder="Nhập email" value="{{ Auth::user()->email }}">
+                            <input class="form-control" name="inputEmail" type="email" placeholder="Nhập email" value="{{ Auth::user()->email }}">
                         </div>
                         <div class="mb-3">
                             <label class="small mb-1" for="inputOld">Giới tính &emsp;&emsp;
@@ -124,27 +124,27 @@
                         </div>
                         <div class="mb-3">
                             <label class="small mb-1" for="inputPhone">Điện Thoại</label>
-                            <input class="form-control" id="inputPhone" type="text" placeholder="Nhập địa chỉ" value="0{{ Auth::user()->phone_number }}">
+                            <input class="form-control" name="inputPhone" type="text" placeholder="Nhập địa chỉ" value="0{{ Auth::user()->phone_number }}">
                         </div>
                         <div class="mb-3">
                             <label class="small mb-1" for="inputOld">Mật Khẩu Cũ </label>
-                            <input class="form-control" id="inputOld" type="password" placeholder="Nhập mật khẩu cũ">
+                            <input class="form-control" name="inputOld" type="password" placeholder="Nhập mật khẩu cũ">
                         </div>
                         <!-- Form Row        -->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (organization name)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputNew">Mật Khẩu Mới</label>
-                                <input class="form-control" id="inputNew" type="password" placeholder="Nhập mật khẩu mới" >
+                                <input class="form-control" name="inputNew" type="password" placeholder="Nhập mật khẩu mới" >
                             </div>
                             <!-- Form Group (location)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputConfirm">Xác Nhận Mật Khẩu</label>
-                                <input class="form-control" id="inputConfirm" type="password" placeholder="Xác nhận mật khẩu">
+                                <input class="form-control" name="inputConfirm" type="password" placeholder="Xác nhận mật khẩu">
                             </div>
                         </div>
                         <!-- Save changes button-->
-                        <button class="btn btn-primary" type="submit">Save changes</button>
+                        <button class="btn btn-primary" type="submit">Cập Nhật</button>
                     </div>
                 </div>
             </div>
@@ -153,7 +153,7 @@
 </div>
 <script>
     function chooseFile() {
-      $("#fileInput").click();
+      $("#inputFileImage").click();
     }
 </script>
 @endsection

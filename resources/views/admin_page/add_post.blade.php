@@ -1,7 +1,11 @@
 @extends('layout.layout_admin')
 @section('title', 'Trang danh sách sản phẩm')
-
-
+<script src="//cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+<style>
+    .form-group{
+        margin-left: 20px;
+    }
+</style>
 @section('breadcrumb')
     <div class="content-header">
         <div class="container-fluid">
@@ -19,7 +23,6 @@
 @endsection
 
 @section('content')
-
 <form action="{{ url('add-posts') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
@@ -54,7 +57,8 @@
     </div>
 
     <div class="form-group">
-        &emsp;&emsp;<textarea name="inputContent" id="" cols="80" rows="20" placeholder="Nhập nội dung bài viết..."></textarea>
+        <label for="">Nội Dung</label>
+        <textarea name="inputContent" id="" cols="200" rows="20"></textarea>
     </div>
 
     <div class="form-group">
@@ -69,5 +73,9 @@
         </div>
     </div>
 </form>
-
+<script>
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace( 'inputContent' );
+</script>
 @endsection

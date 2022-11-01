@@ -22,12 +22,13 @@ class HomeConTroller extends Controller
             ->join('users', 'users.id', "=", 'posts.author')
             ->orderBy('posts.id', 'DESC')
             ->take(4)
-            ->get(['categories.cate_name', 'posts.title', 'posts.image', 'posts.id', 'users.full_name', 'posts.created_at', 'posts.cate_id']);
+            ->get(['categories.cate_name', 'posts.title', 'posts.image', 'posts.id', 'users.full_name', 'posts.created_at', 'posts.cate_id', 'posts.author']);
         $get_news = Category::join('posts', 'categories.id', '=', 'posts.cate_id')
             ->join('users', 'users.id', "=", 'posts.author')
-            ->select(['categories.cate_name', 'posts.title', 'posts.image', 'posts.id', 'users.full_name', 'posts.created_at', 'posts.content', 'posts.view', 'posts.cate_id'])
+            ->select(['categories.cate_name', 'posts.title', 'posts.image', 'posts.id', 'users.full_name', 'posts.created_at', 'posts.content', 'posts.view', 'posts.cate_id', 'posts.author'])
             ->orderBy('posts.id', 'DESC')
-            ->paginate(4);
+            ->paginate(3);
+
         $populars = DB::table('posts')->orderByDesc('view')->take(3)->get();
         return view('custom_page.index', [
             'first_slide' => $first_slide,
@@ -179,19 +180,20 @@ class HomeConTroller extends Controller
         return view('custom_page.profile_info');
     }
 
-    public function change_profile(Request $request, $id)
+    public function change_profile(Request $request, $id_user)
     {
         $old_pass = $request->input('inputOld');
         $new_pass = $request->input('inputNew');
         $confirm = $request->input('inputConfirm');
-        $update_profile = User::find($id);
+        $update_profile = User::find($id_user);
+        //Update password if fill in 3 textbox
         if ($old_pass != "" && $new_pass != "" && $confirm != "") {
             if ($new_pass != $confirm) {
                 return redirect()->back()->with('alert', 'Xác nhận mật khẩu không đúng');
-            } else if ($old_pass != $update_profile->password) {
+            } else if (bcrypt($old_pass) != $update_profile->password) {
                 return redirect()->back()->with('alert', 'Mật khẩu cũ không đúng');
             } else {
-                $update_profile->password = $new_pass;
+                $update_profile->password = bcrypt($new_pass);
             }
         }
         $update_profile->full_name = $request->input('inputName');
@@ -206,7 +208,17 @@ class HomeConTroller extends Controller
             $update_profile->avatar = $image_name;
         }
         $update_profile->save();
-
         return redirect()->back()->with('alert', 'Cập nhật thành công');
+    }
+    public function page_author($id)
+    {
+        $get_author = User::where('id', $id)->first();
+        $get_page = Post::where('author', $id)->paginate(3);
+        $populars = DB::table('posts')->orderByDesc('view')->take(3)->get();
+        return view('custom_page.page_author', [
+            'get_author' => $get_author,
+            'get_page' => $get_page,
+            'populars' => $populars
+        ]);
     }
 }
