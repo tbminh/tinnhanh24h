@@ -159,7 +159,6 @@
         </ul>
     </nav>
     <!-- /.navbar -->
-
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
@@ -234,6 +233,7 @@
                             </li>
                         </ul>
                     </li>
+                    
                     <li class="nav-item">
                         <a href="{{url('page-category')}}" class="nav-link">
                             <i class="fa fa-sliders" aria-hidden="true"></i>

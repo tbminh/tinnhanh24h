@@ -221,4 +221,7 @@ class HomeConTroller extends Controller
             'populars' => $populars
         ]);
     }
+    public function about_us()
+    {
+    }
 }

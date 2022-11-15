@@ -24,14 +24,12 @@
                 <div class="page-wrapper">
                     <div class="row">
                         <div class="col-lg-5">
-                            <h4>Who we are</h4>
-                            <p>Tech Blog is a personal blog for handcrafted, cameramade photography content, fashion styles from independent creatives around the world.</p>
+                            <h4>Chúng Tôi Là Ai?</h4>
+                            <p>Tinnhanh24h là trang tin tức chia sẽ những nội dung về công nghệ, kinh tế số từ nhiều nguồn tác giả khác nhau trên toàn thế giới.</p>
+                            
+                            <h4>Liên Hệ Với Chúng Tôi</h4>
+                            <p>Tinnhanh24h luôn lắng nghe, thấu hiểu ý kiến của người dùng. Nếu có vấn đề thắc mắc vui lòng để lại ý kiến bên dưới bạn nhé!!!</p>
 
-                            <h4>How we help?</h4>
-                            <p>Etiam vulputate urna id libero auctor maximus. Nulla dignissim ligula diam, in sollicitudin ligula congue quis turpis dui urna nibhs. </p>
-
-                            <h4>Pre-Sale Question</h4>
-                            <p>Fusce dapibus nunc quis quam tempor vestibulum sit amet consequat enim. Pellentesque blandit hendrerit placerat. Integertis non.</p>
                         </div>
                         <div class="col-lg-7">
                             <form class="form-wrapper" action="{{ route('post.feedback') }}" method="POST">
