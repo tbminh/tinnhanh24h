@@ -223,5 +223,6 @@ class HomeConTroller extends Controller
     }
     public function about_us()
     {
+        return view('custom_page.about_us');
     }
 }
