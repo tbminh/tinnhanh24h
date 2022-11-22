@@ -26,13 +26,13 @@
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-info">
-                        <div class="inner"><h3>Order</h3>
-                            <p>Đơn chưa duyệt</p>
+                        <div class="inner"><h3>POSTS</h3>
+                            <p>Tổng số bài viết</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
                         </div>
-                        <a href="{{ url('admin-order') }}" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ url('admin-order') }}" class="small-box-footer">Xem thêm<i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -40,9 +40,8 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>Product</h3>
-
-                            <p>Số sản phẩm</p>
+                            <h3>Category</h3>
+                            <p>Số thể loại</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
@@ -55,9 +54,8 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>Count</h3>
-
-                            <p>Số khách hàng</p>
+                            <h3>User</h3>
+                            <p>Số người dùng</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
@@ -71,7 +69,6 @@
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3>Total</h3>
-
                             <p>Tổng doanh thu</p>
                         </div>
                         <div class="icon">
@@ -83,7 +80,6 @@
                 <!-- ./col -->
             </div>
             <!-- /.row -->
-
 
             <!-- Main row -->
             <div class="row">
@@ -100,15 +96,15 @@
                         <div class="card-body p-1">
                             <table class="table">
                                 <thead>
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Mã đơn hàng</th>
-                                    <th>Tên khách hàng</th>
-                                    <th>Địa chỉ</th>
-                                    <th>Trạng thái</th>
-                                    <th>Phương thức thanh toán</th>
-                                    <th scope="col" colspan="3">Tùy chọn</th>
-                                </tr>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Mã đơn hàng</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Trạng thái</th>
+                                        <th>Phương thức thanh toán</th>
+                                        <th scope="col" colspan="3">Tùy chọn</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     

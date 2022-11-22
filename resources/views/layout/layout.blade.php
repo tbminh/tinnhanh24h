@@ -68,7 +68,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="tech-category-03.html">Về Chúng Tôi</a>
+                                <a class="nav-link" href="{{ url('about-us') }}">Về Chúng Tôi</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('page-contact') }}">Phản Hồi</a>
