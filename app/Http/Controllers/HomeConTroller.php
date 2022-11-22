@@ -108,10 +108,15 @@ class HomeConTroller extends Controller
             'get_cate' => $get_cate
         ]);
     }
-    public function list_post($id)
+    public function list_post($id,Request $request)
     {
+        $search = $request->input('search');
         $get_cate = DB::table('categories')->where('id', $id)->first();
-        $get_list = DB::table('posts')->where('cate_id', $id)->latest()->paginate(3);
+        if($search != ""){
+            $get_list = Post::where('title', 'like', '%'.$search.'%')->paginate(3);
+        } else{
+            $get_list = DB::table('posts')->where('cate_id', $id)->latest()->paginate(3);
+        }
         return view('custom_page.list_post', [
             'get_list' => $get_list,
             'get_cate' => $get_cate
