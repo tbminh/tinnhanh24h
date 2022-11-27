@@ -47,17 +47,18 @@ class AdminController extends Controller
     }
     public function index()
     {
-        return view('admin_page.index');
+        $get_post = DB::table('posts')->where('post_status',0)->get();
+        return view('admin_page.index',['get_post'=>$get_post]);
     }
     public function role_access()
     {
         $show_user_roles = User::paginate(5);
         return view('admin_page.role_access', ['show_user_roles' => $show_user_roles]);
     }
-    public function page_employee()
+    public function page_guest()
     {
         $show_employee = User::where('role_id', 3)->latest()->paginate(5);
-        return view('admin_page.employee', ['show_employee' => $show_employee]);
+        return view('admin_page.page_guest', ['show_employee' => $show_employee]);
     }
     public function page_category()
     {

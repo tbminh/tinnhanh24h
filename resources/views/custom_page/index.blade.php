@@ -5,22 +5,6 @@
 <section class="section first-section">
     <div class="container-fluid">
         <div class="masonry-blog clearfix">
-{{--            <div class="first-slot">--}}
-{{--                <div class="masonry-box post-media">--}}
-{{--                     <img src="{{ url('public/upload/'.$first_slide->image) }}" alt="" class="img-fluid">--}}
-{{--                     <div class="shadoweffect">--}}
-{{--                        <div class="shadow-desc">--}}
-{{--                            <div class="blog-meta">--}}
-{{--                                <span class="bg-orange"><a href="#" title="">{{  $first_slide->cate_name }}</a></span>--}}
-{{--                                <h4><a href="{{ url('post-detail/'.$first_slide->id) }}" title="">{{ $first_slide->title }}</a></h4>--}}
-{{--                                <small><a href="{{ url('post-detail/'.$first_slide->id) }}" title="">24 July, 2017</a></small>--}}
-{{--                                <small><a href="{{ url('post-detail/'.$first_slide->id) }}" title="">by {{ $first_slide->full_name }}</a></small>--}}
-{{--                            </div><!-- end meta -->--}}
-{{--                        </div><!-- end shadow-desc -->--}}
-{{--                    </div><!-- end shadow -->--}}
-{{--                </div><!-- end post-media -->--}}
-{{--            </div><!-- end first-side -->--}}
-{{--            @php($get_sliders = DB::table('posts')->orderBy('id','desc')->take(4)->get())--}}
             @foreach($first_slide as $data)
                 <div class="second-slot">
                     <div class="masonry-box post-media">
@@ -67,7 +51,7 @@
                                 <div class="blog-meta big-meta col-md-8">
                                     <h4><a href="{{ url('post-detail/'.$data->id) }}">{{ $data->title }}</a></h4>
                                     <p>{{substr($data->content,0,100)."....."}}</p>
-                                    <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">{{ $data->cate_name }}</a></small>
+                                    <small class="firstsmall"><a class="bg-orange" href="{{url('list-post/'.$data->cate_id)}}" title="">{{ $data->cate_name }}</a></small>
                                     <small><a href="#" title="">{{$data->created_at->format('d M 20y')}}</a></small>
                                     <small><a href="{{ url('page-author/'.$data->author) }}" title="">by {{ $data->full_name }}</a></small>
                                     <small><a href="#" title=""><i class="fa fa-eye"></i> {{ $data->view }}</a></small>
@@ -84,22 +68,7 @@
 
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                 <div class="sidebar">
-                    {{-- <div class="widget">
-                        <h2 class="widget-title">Popular Posts</h2>
-                        @foreach ($populars as $data)
-                            <div class="blog-list-widget">
-                                <div class="list-group">
-                                    <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="w-100 justify-content-between">
-                                        <img src="{{ url('public/upload/'.$data->image) }}" class="img-fluid float-left">
-                                            <h5 class="mb-1">{{ $data->title }}</h5>
-                                            <small>{{$data->created_at}}</small>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div><!-- end blog-list -->
-                        @endforeach
-                    </div><!-- end widget --> --}}
+                    </div><!-- end widget --> 
                     <div class="widget">
                         <h2 class="widget-title">Bài Viết Phổ Biến</h2>
                         <div class="blog-list-widget">
@@ -109,12 +78,12 @@
                                         <div class="w-100 justify-content-between">
                                             <img src="{{ url('public/upload/'.$data->image) }}" class="img-fluid float-left">
                                             <h5 class="mb-1">{{ $data->title }}</h5>
-                                            <span class="rating">
+                                            {{-- <span class="rating">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
-                                            </span>
+                                            </span> --}}
                                         </div>
                                     </a>
                                 @endforeach

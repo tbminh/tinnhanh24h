@@ -93,13 +93,13 @@ class HomeConTroller extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->back();
+        return redirect('/');
     }
     public function post_detail($id)
     {
-        $get_detail = DB::table('posts')->where('id', $id)->first();
-        $get_cate = DB::table('categories')->where('id', $get_detail->cate_id)->first();
-
+        $get_detail = DB::table('posts')->where('id', $id)->first(); //Lấy chi tiết tin tức 
+        $get_cate = DB::table('categories')->where('id', $get_detail->cate_id)->first(); //Lấy thể loại của tin tức
+        //Cập nhật lại view
         $update_view = Post::find($id);
         $update_view->view = $update_view->view + 1;
         $update_view->save();
@@ -108,10 +108,16 @@ class HomeConTroller extends Controller
             'get_cate' => $get_cate
         ]);
     }
-    public function list_post($id)
+    public function list_post($id,Request $request)
     {
+        $search = $request->input('search');
         $get_cate = DB::table('categories')->where('id', $id)->first();
-        $get_list = DB::table('posts')->where('cate_id', $id)->latest()->paginate(3);
+        if($search != ''){
+            $get_list = DB::table('posts')->where('title','LIKE',"%$search%")->paginate(3);
+        } else{
+            $get_list = DB::table('posts')->where('cate_id', $id)->latest()->paginate(3);
+        }
+        
         return view('custom_page.list_post', [
             'get_list' => $get_list,
             'get_cate' => $get_cate
@@ -170,7 +176,7 @@ class HomeConTroller extends Controller
                 $message->to($mail_data['recipient'])
                     ->from($mail_data['fromEmail'], $mail_data['fromName'])
                     ->subject($mail_data['subject']);
-            });
+            }); 
             return redirect()->back()->with("alert", "Email đã được gửi!");
         }
     }

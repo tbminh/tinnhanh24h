@@ -26,7 +26,8 @@
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-info">
-                        <div class="inner"><h3>POSTS</h3>
+                        @php($get_posts = DB::table('posts')->count())
+                        <div class="inner"><h3>{{$get_posts}} POSTS</h3>
                             <p>Tổng số bài viết</p>
                         </div>
                         <div class="icon">
@@ -40,7 +41,8 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>Category</h3>
+                            @php($get_cate = DB::table('categories')->count())
+                            <h3>{{$get_cate}} Category</h3>
                             <p>Số thể loại</p>
                         </div>
                         <div class="icon">
@@ -54,7 +56,8 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>User</h3>
+                            @php($get_user = DB::table('users')->count())
+                            <h3>{{$get_user}} User</h3>
                             <p>Số người dùng</p>
                         </div>
                         <div class="icon">
@@ -98,16 +101,62 @@
                                 <thead>
                                     <tr>
                                         <th>STT</th>
-                                        <th>Mã đơn hàng</th>
-                                        <th>Tên khách hàng</th>
-                                        <th>Địa chỉ</th>
+                                        <th>Tác Giả</th>
+                                        <th>Loại Bài Viết</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Nội Dung</th>
                                         <th>Trạng thái</th>
-                                        <th>Phương thức thanh toán</th>
                                         <th scope="col" colspan="3">Tùy chọn</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+                                    @foreach ($get_post as $key => $data)
+                                        <tr>
+                                            <td>{{++$key}} </td>
+                                            <td>
+                                                @php($get_user = DB::table('users')->where('id',$data->author)->first())
+                                                {{$get_user->full_name}}
+                                            </td>
+                                            <td>
+                                                @php($get_cate = DB::table('categories')->where('id',$data->cate_id)->first())
+                                                {{$get_cate->cate_name}}
+                                            </td>
+                                            <td>
+                                                {{$data->title}}
+                                            </td>
+                                            <td> {{substr($data->content,0,100)."....."}} </td>
+                                            <td>
+                                                @if ($data->post_status == 0)
+                                                    <b style="color: red;"> Chưa duyệt</b>
+                                                @else
+                                                    <b style="color: green;">Đã duyệt</b>
+                                                @endif
+                                            </td>
+                                            @if ($data->post_status == 0)
+                                            <td>
+                                                <a class="btn btn-success btn-sm" href=" {{url('check-post/'.$data->id)}} ">
+                                                    <i class="fa fa-check"></i> Duyệt
+                                                </a>
+                                            </td>
+                                        @else
+                                            <td>
+                                                <a class="btn btn-danger btn-sm" href=" {{url('cancel-post/'.$data->id)}} ">
+                                                    <i class="fa fa-trash"></i> Hủy
+                                                </a>
+                                            </td>
+                                        @endif
+                                        <td>
+                                            <a class="btn btn-danger btn-sm" href=" {{url('delete-post/'.$data->id)}} "  onclick="return confirm('Bạn có chắc muốn xóa không?');">
+                                                <i class="fa fa-trash"></i> Xóa
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#edit{{ $data->id }}">
+                                                <i class="fas fa-edit"></i> Đổi
+                                            </button>
+                                        </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

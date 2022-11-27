@@ -23,7 +23,6 @@ Route::get('logout', [HomeConTroller::class, 'logout']);
 Route::get('/page-contact', [HomeConTroller::class, 'page_contact']);
 Route::get('/post-detail/{id}', [HomeConTroller::class, 'post_detail']);
 Route::get('list-post/{id}', [HomeController::class, 'list_post']);
-Route::get('list-post/{id}', [HomeController::class, 'list_post']);
 Route::get('about-us', [HomeController::class, 'about_us']);
 Route::get('profile-info/{id}', [HomeController::class, 'profile_info']);
 Route::put('change-profile/{id}', [HomeController::class, 'change_profile']);
@@ -43,7 +42,7 @@ Route::get('logout-admin', [AdminController::class, 'logout_admin']);
 Route::middleware([CheckLogin::class])->group(function () {
     Route::get('/page-admin', [AdminController::class, 'index']);
     Route::get('/role-access', [AdminController::class, 'role_access']);
-    Route::get('/page-employee', [AdminController::class, 'page_employee']);
+    Route::get('/page-guest', [AdminController::class, 'page_guest']);
     Route::get('/page-author', [AdminController::class, 'page_author']);
     Route::get('/administrator', [AdminController::class, 'page_admin']);
     Route::get('/delete-user/{id}', [AdminController::class, 'delete_user']);
