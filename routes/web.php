@@ -42,6 +42,7 @@ Route::get('logout-admin', [AdminController::class, 'logout_admin']);
 Route::middleware([CheckLogin::class])->group(function () {
     Route::get('/page-admin', [AdminController::class, 'index']);
     Route::get('/role-access', [AdminController::class, 'role_access']);
+    Route::post('/post-add-role-access', [AdminController::class, 'post_add_role_access']);
     Route::get('/page-guest', [AdminController::class, 'page_guest']);
     Route::get('/page-author', [AdminController::class, 'page_author']);
     Route::get('/administrator', [AdminController::class, 'page_admin']);

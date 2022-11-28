@@ -49,11 +49,11 @@
                             <i class="ion ion-clipboard mr-1"></i>
                             SẢN PHẨM
                         </h3>
-                        <div class="card-tools">
+                        {{-- <div class="card-tools">
                             <a  href=" {{url('page-add-post')}} " class="btn btn-primary btn-sm" >
                                 <i class="fa fa-plus-circle"></i> Thêm bài viết
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body p-1">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\RoleAccess;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,8 +48,8 @@ class AdminController extends Controller
     }
     public function index()
     {
-        $get_post = DB::table('posts')->where('post_status',0)->get();
-        return view('admin_page.index',['get_post'=>$get_post]);
+        $get_post = DB::table('posts')->where('post_status', 0)->get();
+        return view('admin_page.index', ['get_post' => $get_post]);
     }
     public function role_access()
     {
@@ -97,6 +98,7 @@ class AdminController extends Controller
         $add_post->title = $request->input('inputTitle');
         $add_post->content = $request->input('inputContent');
         $add_post->post_status = 0;
+        $add_post->view = 0;
         if ($request->hasFile('inputFileImage')) {
             $image = $request->file('inputFileImage');
             $image_name = $image->getClientOriginalName();
@@ -187,5 +189,13 @@ class AdminController extends Controller
     {
         DB::table('posts')->where('id', $id)->update(['post_status' => 0]);
         return redirect()->back();
+    }
+    public function post_add_role_access(Request $request)
+    {
+        $add_role = new RoleAccess();
+        $add_role->role_name = $request->input('inputRoleName');
+        $add_role->permission = $request->input('inputDescript');
+        $add_role->save();
+        return redirect()->back()->with('alert', 'Đã thêm thành công!');
     }
 }

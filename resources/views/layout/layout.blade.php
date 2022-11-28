@@ -78,7 +78,7 @@
                         <ul style="margin: 5px 230px 0px 0px;">
                             <div class="search-container">
                                 <form action="{{ url('list-post/0') }} ">
-                                  <input type="text" placeholder="Tìm kiếm.." name="search" style="width: 250px;">
+                                  <input type="text" placeholder="Tìm kiếm.." name="search" style="width: 200px;">
                                   <button type="submit"><i class="fa fa-search"></i></button>
                                 </form>
                               </div>

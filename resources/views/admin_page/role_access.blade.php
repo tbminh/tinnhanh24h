@@ -85,16 +85,16 @@
                         <div class="card-body p-1">
                             <table class="table">
                                 <thead>
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Họ tên</th>
-                                    <th>Quyền</th>
-                                    <th>Chọn</th>
-                                </tr>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Họ tên</th>
+                                        <th>Quyền</th>
+                                        <th>Chọn</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
                                     @foreach ($show_user_roles as $key => $show_user_role)
+                                    <tr>
                                         <td>{{ ++$key }}</td>
                                         <td>{{  $show_user_role->full_name}}</td>
                                         <td>
@@ -108,8 +108,8 @@
                                                 <button class="btn btn-primary btn-sm"  type="button" data-toggle="modal" data-target="#model{{ $show_user_role->id }}">Thay đổi</button>
                                             @endif
                                         </td>
+                                    </tr>
                                     @endforeach
-                                </tr>
                                 {{-- <div class="modal fade" id="model{{ $show_user_role->id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <form action="{{ url('update-role/'.$show_user_role->id) }}" method="POST">
