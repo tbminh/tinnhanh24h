@@ -54,7 +54,8 @@ class AdminController extends Controller
     public function role_access()
     {
         $show_user_roles = User::paginate(5);
-        return view('admin_page.role_access', ['show_user_roles' => $show_user_roles]);
+        // return view('admin_page.role_access', ['show_user_roles' => $show_user_roles]);
+        return view('admin_page.role_access',compact('show_user_roles'));
     }
     public function page_guest()
     {

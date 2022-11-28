@@ -97,18 +97,35 @@
                                             <img src="{{ url('public/upload/'.$data->image) }}"
                                             class="img-circle elevation-2" alt="Post Image " width="60px" height="50px">
                                         </td>
-                                        @if ($data->post_status == 0)
+                                        @php($get_role = DB::table('users')->where('id',Auth::id())->first())
+                                        @if($get_role->role_id == 1)
+                                            @if ($data->post_status == 0)
+                                                <td>
+                                                    <a class="btn btn-success btn-sm" href=" {{url('check-post/'.$data->id)}} ">
+                                                        <i class="fa fa-check"></i> Duyệt
+                                                    </a>
+                                                </td>
+                                            @else
+                                                <td>
+                                                    <a class="btn btn-danger btn-sm" href=" {{url('cancel-post/'.$data->id)}} ">
+                                                        <i class="fa fa-trash"></i> Hủy
+                                                    </a>
+                                                </td>
+                                            @endif
+                                        @else
+                                            @if ($data->post_status == 0)
                                             <td>
-                                                <a class="btn btn-success btn-sm" href=" {{url('check-post/'.$data->id)}} ">
+                                                <a class="btn btn-success btn-sm" href="#" disabled = "disabled">
                                                     <i class="fa fa-check"></i> Duyệt
                                                 </a>
                                             </td>
-                                        @else
-                                            <td>
-                                                <a class="btn btn-danger btn-sm" href=" {{url('cancel-post/'.$data->id)}} ">
-                                                    <i class="fa fa-trash"></i> Hủy
-                                                </a>
-                                            </td>
+                                            @else
+                                                <td>
+                                                    <a class="btn btn-danger btn-sm" href="#" disabled = "disabled">
+                                                        <i class="fa fa-trash"></i> Hủy
+                                                    </a>
+                                                </td>
+                                            @endif
                                         @endif
                                         <td>
                                             <a class="btn btn-danger btn-sm" href=" {{url('delete-post/'.$data->id)}} "  onclick="return confirm('Bạn có chắc muốn xóa không?');">
@@ -121,83 +138,6 @@
                                             </button>
                                         </td>
                                     </tr>
-                                    {{-- <div class="modal fade" id="edit{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Sửa sản phẩm</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="{{ url('update-product/'.$data->id.'/'.$get_product_suppliers->id) }}" method="POST" enctype="multipart/form-data">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <div class="form-group">
-                                                        <label for="">Tên sản phẩm:</label>
-                                                        <input type="text" name="inputName" class="form-control" placeholder="Nhập tên sản phẩm..."
-                                                        value="{{ $data->product_name }}">
-                                                    </div>
-                    
-                                                    <div class="form-group">
-                                                        <label for="">Nhà cung cấp:</label>
-                                                        <select name="inputSupplier" class="form-control">
-                                                            <option value="{{ $get_suppliers->id }}">{{ $get_suppliers->supplier_name }}</option>
-                                                            <option value=""> --Chọn--</option>
-                                                            @php($supplier = DB::table('suppliers')->get())
-                                                            @foreach($supplier as $value)
-                                                                @if ($value->id == $get_suppliers->id)
-                                                                    @continue
-                                                                @else
-                                                                    <option value="{{ $value->id }}">
-                                                                        {{$value->supplier_name}}
-                                                                    </option>
-                                                                @endif
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                    
-                                                    <div class="form-group">
-                                                        <label for="">Hình ảnh: </label>
-                                                        <input type='file' name="inputFileImage">
-                                                        <img id="blah" src="{{ url('public/home/upload_img/'.$data->product_img)}}" title="{{ $data->product_name }}" alt="Hình Ảnh" style="max-width:100%; height:80px; border: 2px solid #bdc3c7;"/>
-                                                    </div>
-                    
-                                                    <div class="form-group col-md-10">
-                                                        <label for="">Giá sản phẩm:</label>
-                                                        <input type="number" name="inputPrice" class="form-control" placeholder="Nhập giá sản phẩm..."
-                                                        value="{{ ($data->product_price) }}">
-                                                    </div>
-                    
-                                                    <div class="form-group col-md-10">
-                                                        <label for="">Số lượng:</label>
-                                                        <input type="number" name="inputQuantity" class="form-control" placeholder="Nhập số lượng..."
-                                                         value="{{ $data->product_quantity }}">
-                                                    </div>
-                    
-                                                    <div class="form-group col-md-10">
-                                                        <label for="">Đơn vị tính:</label>
-                                                        <input type="text" name="inputUnit" class="form-control" placeholder="Nhập đơn vị tính..."
-                                                        value="{{ $data->unit_price }}">
-                                                    </div>
-                    
-                                                    <div class="form-group col-md-10">
-                                                        <label for="">Giảm giá (%):</label>
-                                                        <input type="number" name="inputDiscount" class="form-control" placeholder="Nhập giá chiết khấu..."
-                                                        value="{{ $data->product_discount }}">
-                                                    </div>
-                                
-                                                    <div class="form-group row">
-                                                        <div class="col-12 text-right">
-                                                            <button type="submit" class="btn btn-primary btn-sm">Cập nhật</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div> --}}
                                 @endforeach
                             </tbody>
                         </table>

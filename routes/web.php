@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeConTroller;
+use App\Http\Controllers\SocialConTroller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckLogin;
 
