@@ -64,8 +64,8 @@
                                 <div class="blog-meta big-meta col-md-8">
                                     <h4><a href="{{ url('post-detail/'.$data->id) }}" title="">{{ $data->title }}</a></h4>
                                     <p>{{substr($data->content,0,200)."....."}}</p>
-                                    <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">Reviews</a></small>
-                                    <small><a href="{{ url('post-detail/'.$data->id) }}" title="">{{$data->created_at->format('d M 20y')}}</a></small>
+                                    <small class="firstsmall"><a class="bg-orange" href="{{ url('list-post/'.$data->cate_id) }}" title="">{{ $data->cate_name }}</a></small>
+                                    <small><a href="#" title="">{{$data->created_at->format('d M 20y')}}</a></small>
                                     <small><a href="{{ url('post-detail/'.$data->id) }}" title="">{{ $data->full_name }}</a></small>
                                     <small><a href="{{ url('post-detail/'.$data->id) }}" title=""><i class="fa fa-eye"></i> {{ $data->view }}</a></small>
                                 </div><!-- end meta -->

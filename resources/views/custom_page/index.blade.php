@@ -17,7 +17,7 @@
                                     </span>
                                     <h4><a href="{{ url('post-detail/'.$data->id) }}" title="">{{$data->title}}</a></h4>
                                     <small><a href="#" title="">{{$data->created_at->format('d M 20y')}}</a></small>
-                                    <small><a href="{{ url('page-author/'.$data->author) }}" title="">by {{$data->full_name}}</a></small>
+                                    <small><a href="{{ url('post-author/'.$data->author) }}" title="">by {{$data->full_name}}</a></small>
                                 </div><!-- end meta -->
                             </div><!-- end shadow-desc -->
                         </div><!-- end shadow -->
@@ -53,7 +53,7 @@
                                     <p>{{substr($data->content,0,100)."....."}}</p>
                                     <small class="firstsmall"><a class="bg-orange" href="{{url('list-post/'.$data->cate_id)}}" title="">{{ $data->cate_name }}</a></small>
                                     <small><a href="#" title="">{{$data->created_at->format('d M 20y')}}</a></small>
-                                    <small><a href="{{ url('page-author/'.$data->author) }}" title="">by {{ $data->full_name }}</a></small>
+                                    <small><a href="{{ url('post-author/'.$data->author) }}" title="">by {{ $data->full_name }}</a></small>
                                     <small><a href="#" title=""><i class="fa fa-eye"></i> {{ $data->view }}</a></small>
                                 </div><!-- end meta -->
                             </div><!-- end blog-box -->
