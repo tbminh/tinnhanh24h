@@ -140,7 +140,7 @@ class HomeConTroller extends Controller
     function createUser($getInfo, $provider)
     {
         $user = User::where('provider_id', $getInfo->id)->first();
-        if (!$user) {
+        if (!$user) { //Nếu chưa có tài khoản trong csdl thì tạo mới
             $user = User::create([
                 'role_id' => 3,
                 'full_name' => $getInfo->name,
@@ -166,6 +166,7 @@ class HomeConTroller extends Controller
         if ($this->isOnline()) {
             $mail_data = [
                 'recipient' => 'odinkingiv@gmail.com',
+                // 'recipient' => 'huynhtb7399@gmail.com',
                 'fromName' => $request->input('inputName'),
                 'fromEmail' => $request->input('inputEmail'),
                 'phone' => $request->input('inputPhone'),

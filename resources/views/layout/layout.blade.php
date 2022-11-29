@@ -137,7 +137,7 @@
                                 <a href="{{url('auth/redirect/google')}}" style="background: #d63031 !important; border-radius: 3rem;" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Google">
                                     <i class="fa fa-google"></i>
                                 </a>&emsp;
-                                <a href="#" style="background: #0984e3 #important;  border-radius: 3rem;" class="btn btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
+                                <a href="{{url('auth/redirect/facebook')}}" style="background: #0984e3 #important;  border-radius: 3rem;" class="btn btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
                                     <i class="fa fa-facebook"></i>
                                 </a>
                             </div>
