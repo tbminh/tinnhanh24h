@@ -174,7 +174,6 @@
             @if(Auth::check())
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        {{-- <img src="#"  class="img-circle elevation-2" alt="User Image"> --}}
                         <img src="{{ asset('public/upload/user.png') }}"  class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
@@ -182,78 +181,185 @@
                     </div>
                 </div>
             @endif
-
-        <!-- Sidebar Menu -->
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
-                    <li class="nav-item has-treeview">
-                        <a href="{{ url('page-admin') }}" class="nav-link">
-                            <i class="fa fa-table"></i>
-                            <p>
-                                &nbsp; Bảng điều khiển
-                                <i class="fas fa-angle"></i>
-                                <span class="badge badge-info "></span>
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link ">
-                            <i class="fa fa-users" aria-hidden="true"></i>
-                            <p>
-                                Quản lí người dùng
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{url('role-access')}}" class="nav-link ">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Quyền truy cập</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href=" {{url('administrator')}} " class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Quản trị</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href=" {{url('page-author')}} " class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Tác Giả</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{url('page-employee')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Khách hàng</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a href="{{url('page-category')}}" class="nav-link">
-                            <i class="fa fa-sliders" aria-hidden="true"></i>
-                            <p>Quản lý category</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{url('page-post')}}" class="nav-link">
-                            <i class="fa fa-sliders" aria-hidden="true"></i>
-                            <p>Quản lý bài viết</p>
-                        </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="{{ url('logout-admin') }}" class="nav-link  text-warning" onclick="return confirm('Bạn có muốn đăng xuất không ?')">
-                            <i class="fa fa-sign-out" ></i>
-                            <p>Đăng xuất</p>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <!-- Sidebar Menu -->
+            @php($get_role = DB::table('users')->where('id',Auth::id())->first())
+            @if($get_role->role_id == 1)
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                            with font-awesome or any other icon font library -->
+                        <li class="nav-item has-treeview">
+                            <a href="{{ url('page-admin') }}" class="nav-link">
+                                <i class="fa fa-table"></i>
+                                <p>
+                                    &nbsp; Bảng điều khiển
+                                    <i class="fas fa-angle"></i>
+                                    <span class="badge badge-info "></span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link ">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <p>
+                                    Quản lí người dùng
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{url('role-access')}}" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Quyền truy cập</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href=" {{url('administrator')}} " class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Quản trị</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href=" {{url('page-author')}} " class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Tác Giả</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{url('page-guest')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Khách hàng</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="{{url('page-category')}}" class="nav-link">
+                                <i class="fa fa-sliders" aria-hidden="true"></i>
+                                <p>Quản lý category</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link ">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <p>
+                                    Quản lí bài viết
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Thêm Bài Viết</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{url('page-post')}}" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Duyệt Bài VIết</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="{{ url('logout-admin') }}" class="nav-link  text-warning" onclick="return confirm('Bạn có muốn đăng xuất không ?')">
+                                <i class="fa fa-sign-out" ></i>
+                                <p>Đăng xuất</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            @else
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                            with font-awesome or any other icon font library -->
+                        <li class="nav-item has-treeview">
+                            <a href="{{ url('page-admin') }}" class="nav-link">
+                                <i class="fa fa-table"></i>
+                                <p>
+                                    &nbsp; Bảng điều khiển
+                                    <i class="fas fa-angle"></i>
+                                    <span class="badge badge-info "></span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link ">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <p>
+                                    Quản lí người dùng
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Quyền truy cập</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Quản trị</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href=" #" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Tác Giả</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Khách hàng</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa fa-sliders" aria-hidden="true"></i>
+                                <p>Quản lý category</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link ">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <p>
+                                    Quản lí bài viết
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href=" {{url('page-add-post')}} " class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Thêm Bài Viết</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Duyệt Bài VIết</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="{{ url('logout-admin') }}" class="nav-link  text-warning" onclick="return confirm('Bạn có muốn đăng xuất không ?')">
+                                <i class="fa fa-sign-out" ></i>
+                                <p>Đăng xuất</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            @endif
             <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->

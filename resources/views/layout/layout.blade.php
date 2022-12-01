@@ -60,7 +60,7 @@
                                      Tin Tức
                                     </button>
                                     <div class="dropdown-menu">
-                                        @php($get_cate = DB::table('categories')->get())
+                                        @php($get_cate = DB::table('categories')->where('id','>',0)->get())
                                         @foreach ($get_cate as $data)
                                             <a class="dropdown-item" href=" {{url('list-post/'.$data->id)}} "> {{$data->cate_name}} </a>
                                         @endforeach
@@ -74,6 +74,7 @@
                                 <a class="nav-link" href="{{ url('page-contact') }}">Phản Hồi</a>
                             </li>
                         </ul>
+<<<<<<< HEAD
                         <ul>
                             <div class="search-container" style="margin:5px 200px 0px 0px;">
                                 <form action="{{ url('list-post/0') }}">
@@ -81,32 +82,41 @@
                                   <button type="submit"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
+=======
+                        <ul style="margin: 5px 230px 0px 0px;">
+                            <div class="search-container">
+                                <form action="{{ url('list-post/0') }} ">
+                                  <input type="text" placeholder="Tìm kiếm.." name="search" style="width: 200px;">
+                                  <button type="submit"><i class="fa fa-search"></i></button>
+                                </form>
+                              </div>
+>>>>>>> 7045f5ba4f1805b974cc56514592690314e1b927
                         </ul>
                         <ul class="navbar-nav mr-2">
-                           @if (Auth::check())
-                                <li class="nav-item">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fa fa-user"></i>  {{ Auth::User()->full_name}}
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="{{ url('profile-info/'.Auth::id()) }}"><i class="fa fa-info"></i>  Thông Tin Cá Nhân</a>
-                                            <a class="dropdown-item" href="{{ url('logout') }}"><i class="fa fa-sign-out"></i>Đăng Xuất</a>
+                            @if (Auth::check())
+                                    <li class="nav-item">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-user"></i>  {{ Auth::User()->full_name}}
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="{{ url('profile-info/'.Auth::id()) }}"><i class="fa fa-info"></i>  Thông Tin Cá Nhân</a>
+                                                <a class="dropdown-item" href="{{ url('logout') }}"><i class="fa fa-sign-out"></i>Đăng Xuất</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                           @else
-                                <li class="nav-item">
-                                    <button type="button" class="btn btn-light btn-round" data-toggle="modal" data-target="#loginModal">
-                                        <i class="fa fa-sign-in"></i>  Đăng Nhập
-                                    </button>
-                                </li>
-                                <li class="nav-item">
-                                    <button type="button" class="btn btn-light btn-round" data-toggle="modal" data-target="#signupModal">
-                                        <i class="fa fa-check"></i>  Đăng Ký
-                                    </button>
-                                </li>
-                           @endif
+                                    </li>
+                            @else
+                                    <li class="nav-item">
+                                        <button type="button" class="btn btn-light btn-round" data-toggle="modal" data-target="#loginModal">
+                                            <i class="fa fa-sign-in"></i>  Đăng Nhập
+                                        </button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button type="button" class="btn btn-light btn-round" data-toggle="modal" data-target="#signupModal">
+                                            <i class="fa fa-check"></i>  Đăng Ký
+                                        </button>
+                                    </li>
+                            @endif
                         </ul>
                     </div>
                 </nav>
@@ -133,7 +143,7 @@
                             </form>
                             <div class="text-center text-muted delimiter">Hoặc đăng nhập bằng:</div>
                             <div class="d-flex justify-content-center social-buttons">
-                                <a href=" {{url('auth/redirect/google')}} " style="background: #d63031 !important; border-radius: 3rem;" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Google">
+                                <a href="{{url('auth/redirect/google')}}" style="background: #d63031 !important; border-radius: 3rem;" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Google">
                                     <i class="fa fa-google"></i>
                                 </a>&emsp;
                                 <a href="{{url('auth/redirect/facebook')}}" style="background: #0984e3 #important;  border-radius: 3rem;" class="btn btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">

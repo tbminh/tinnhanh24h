@@ -62,7 +62,6 @@
                                     <div class="col-3">
                                         <label for="">Tên loại:</label>
                                     </div>
-
                                     <div class="col-9">
                                         <input type="text" name="inputName" class="form-control" placeholder="Nhập tên loại">
                                         <small class="text-danger">{{ $errors->first('inputCategory') }}</small>

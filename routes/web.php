@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeConTroller;
+use App\Http\Controllers\SocialConTroller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckLogin;
 
@@ -24,10 +25,10 @@ Route::get('/page-contact', [HomeConTroller::class, 'page_contact']);
 Route::get('/page-author/{id}', [HomeConTroller::class, 'page_author']);
 Route::get('/post-detail/{id}', [HomeConTroller::class, 'post_detail']);
 Route::get('list-post/{id}', [HomeController::class, 'list_post']);
-Route::get('list-post/{id}', [HomeController::class, 'list_post']);
 Route::get('about-us', [HomeController::class, 'about_us']);
 Route::get('profile-info/{id}', [HomeController::class, 'profile_info']);
 Route::put('change-profile/{id}', [HomeController::class, 'change_profile']);
+Route::get('/post-author/{id}', [HomeController::class, 'page_author']);
 // Đăng nhập google
 Route::get('auth/redirect/{provider}', [HomeController::class, 'redirect']);
 Route::get('callback/{provider}', [HomeController::class, 'callback']);
@@ -44,7 +45,8 @@ Route::get('logout-admin', [AdminController::class, 'logout_admin']);
 Route::middleware([CheckLogin::class])->group(function () {
     Route::get('/page-admin', [AdminController::class, 'index']);
     Route::get('/role-access', [AdminController::class, 'role_access']);
-    Route::get('/page-employee', [AdminController::class, 'page_employee']);
+    Route::post('/post-add-role-access', [AdminController::class, 'post_add_role_access']);
+    Route::get('/page-guest', [AdminController::class, 'page_guest']);
     Route::get('/page-author', [AdminController::class, 'page_author']);
     Route::get('/administrator', [AdminController::class, 'page_admin']);
     Route::get('/delete-user/{id}', [AdminController::class, 'delete_user']);

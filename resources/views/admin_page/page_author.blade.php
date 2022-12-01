@@ -10,7 +10,7 @@
                 <div class="col-sm-6 text-right">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="page-admin">Trang chủ</a></li>
-                        <li class="breadcrumb-item active">Nhân viên</li>
+                        <li class="breadcrumb-item active">Tác Giả</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -37,7 +37,7 @@
                     <div class="card-header">
                         <h3 class="card-title">
                             <i class="ion ion-clipboard mr-1"></i>
-                            Nhân viên
+                            Tác Giả
                         </h3>
                         <div class="card-tools">
                             <button class="btn btn-primary btn-sm"type="button" data-toggle="modal" data-target="#exampleModal" >
@@ -68,7 +68,7 @@
                                     <td> {{ ++$key }}</td>
                                     <td>{{$data->full_name}}</td>
                                     <td>
-                                        <img src="{{ url('public/images/'.$data->avatar) }}"
+                                        <img src="{{ url('public/upload/'.$data->avatar) }}"
                                             class="img-circle elevation-2" alt="User Image " width="30px" height="30px">
                                     </td>
                                     <td>{{$data->email}}</td>
