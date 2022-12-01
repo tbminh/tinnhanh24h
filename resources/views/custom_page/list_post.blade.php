@@ -84,7 +84,7 @@
                     
 
                     <div class="widget">
-                        <h2 class="widget-title">Follow Us</h2>
+                        <h2 class="widget-title">Theo Dõi Chúng Tôi</h2>
                         <div class="row text-center">
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                 <a href="#" class="social-button facebook-button">

@@ -72,11 +72,7 @@
   <div class="row">
     <div class="column">
       <div class="card">
-<<<<<<< HEAD
-        <img src="{{ url('public/upload/mark.jpg') }}" alt="Jane" style="width:100%; height: 300px;">
-=======
         <img src="{{url('public/upload/musk.jpg')}}" alt="Jane" style="width:100%; height: 300px;">
->>>>>>> 7045f5ba4f1805b974cc56514592690314e1b927
         <div class="container">
           <h2>Jane Doe</h2>
           <p class="title">CEO & Founder</p>
@@ -89,11 +85,7 @@
   
     <div class="column">
       <div class="card">
-<<<<<<< HEAD
-        <img src="{{ url('public/upload/CZ.jpg') }}" alt="Mike" style="width:100%; height: 300px;">
-=======
         <img src="{{url('public/upload/zuckerberg.jpg')}}" alt="Mike" style="width:100%; height: 300px;">
->>>>>>> 7045f5ba4f1805b974cc56514592690314e1b927
         <div class="container">
           <h2>Mike Ross</h2>
           <p class="title">Excution Director</p>
@@ -106,11 +98,7 @@
     
     <div class="column">
       <div class="card">
-<<<<<<< HEAD
-        <img src="{{ url('public/upload/musk.jpeg') }}" alt="John" style="width:100%; height: 300px;">
-=======
         <img src="{{url('public/upload/vuong.jpeg')}}" alt="John" style="width:100%; height: 300px;">
->>>>>>> 7045f5ba4f1805b974cc56514592690314e1b927
         <div class="container">
           <h2>John Doe</h2>
           <p class="title">Designer Manager</p>

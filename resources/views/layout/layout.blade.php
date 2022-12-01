@@ -74,15 +74,6 @@
                                 <a class="nav-link" href="{{ url('page-contact') }}">Phản Hồi</a>
                             </li>
                         </ul>
-<<<<<<< HEAD
-                        <ul>
-                            <div class="search-container" style="margin:5px 200px 0px 0px;">
-                                <form action="{{ url('list-post/0') }}">
-                                  <input type="text" placeholder="Tìm Kiếm.." name="search" style="width: 250px;">
-                                  <button type="submit"><i class="fa fa-search"></i></button>
-                                </form>
-                            </div>
-=======
                         <ul style="margin: 5px 230px 0px 0px;">
                             <div class="search-container">
                                 <form action="{{ url('list-post/0') }} ">
@@ -90,7 +81,6 @@
                                   <button type="submit"><i class="fa fa-search"></i></button>
                                 </form>
                               </div>
->>>>>>> 7045f5ba4f1805b974cc56514592690314e1b927
                         </ul>
                         <ul class="navbar-nav mr-2">
                             @if (Auth::check())

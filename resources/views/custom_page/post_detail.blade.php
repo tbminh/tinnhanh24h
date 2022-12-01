@@ -13,15 +13,15 @@
                         </ol>
 
                         <span class="color-orange active">
-                            <a href=" {{url('list-post/'.$get_cate->id)}} ">{{$get_cate->cate_name}} </a>
+                            <a href=" {{url('list-post/'.$get_detail->id)}}">{{$get_detail->cate_name}} </a>
                         </span>
 
                         <h3> {{$get_detail->title}} </h3>
 
                         <div class="blog-meta big-meta">
-                            <small><a href="tech-single.html" title="">21 July, 2017</a></small>
-                            <small><a href="tech-author.html" title="">by Jessica</a></small>
-                            <small><a href="#" title=""><i class="fa fa-eye"></i> 2344 </a></small>
+                            <small><a href="#" title="">{{$get_detail->created_at->format('d M 20y')}}</a></small>
+                            <small><a href="{{ url('list-post/'.$get_detail->author) }}">by {{ $get_detail->full_name }}</a></small>
+                            <small><a href="#" title=""><i class="fa fa-eye"></i> {{ $get_detail->view }} </a></small>
                         </div><!-- end meta -->
 
                         <div class="post-sharing">
@@ -40,66 +40,24 @@
                     <div class="blog-content">  
                         <div class="pp">
                             <p> {{ $get_detail->content }} </p>
-
                         </div><!-- end pp -->
-
-                        {{-- <div class="pp">
-                            <h3><strong>Nam non velit est. Sed lobortis arcu vitae nunc molestie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </strong></h3>
-
-                            <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
-
-                            <p>Morbi pharetra porta consequat. Aenean et diam sapien. <a href="#">Interdum et malesuada</a> fames ac ante ipsum primis in faucibus. Pellentesque dictum ligula iaculis, feugiat metus eu, sollicitudin ex. Quisque eu ullamcorper ligula. In vel ex ac purus finibus viverra. Maecenas pretium lobortis turpis. Fusce lacinia nisi in tortor massa nunc.</p>
-
-                            <ul class="check">
-                                <li>Integer sit amet odio ac lectus imperdiet elementum.</li>
-                                <li>Praesent vitae lacus sed lacus ullamcorper mollis.</li>
-                                <li>Donec vitae metus ac felis vulputate tincidunt non et ex.</li>
-                                <li>In dapibus sapien at viverra venenatis.</li>
-                                <li>Pellentesque mollis velit id maximus finibus.</li>
-                            </ul>
-
-                            <p>Proin ultricies nulla consectetur, sollicitudin dolor at, sollicitudin mauris. Maecenas at nunc nunc. Ut nulla felis, tincidunt et porttitor at, rutrum in dolor. Aenean id tincidunt ligula. Donec vitae placerat odio. Mauris accumsan nibh ut nunc maximus, ac auctor elit vehicula. Cras leo sem, vehicula a ultricies ac, condimentum vitae lectus. Sed ut eros euismod, luctus nisl eu, congue odio. </p>
-
-                            <p><img src="public/upload/tech_menu_10.jpg" class="float-left" width="380" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.rta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
-
-                            <h3><strong>Nam non velit est. Sed lobortis arcu vitae nunc molestie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </strong></h3>
-
-
-                            <p>Aliquam eget maximus odio. Aliquam varius nisl ut leo fermentum, id fringilla magna tempus. Curabitur quis bibendum lorem, ut suscipit tellus. Morbi id dictum justo, et massa nunc. Mauris laoreet, neque et varius malesuada, justo neque consequat dolor, sit amet semper dui ligula commodo enim. Duis mauris magna, euismod in ante sed, laoreet faucibus elit. Nam euismod vulputate lorem, nec tincidunt lacus volutpat sit amet. In libero eros, dignissim vitae quam sed, maximus consectetur justo. Donec id orci eget odio convallis pellentesque. Quisque urna cras amet.Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
-
-                            <p><img src="public/upload/tech_menu_11.jpg" class="float-right" width="380" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.rta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
-
-                            <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
-                        </div><!-- end pp --> --}}
                     </div><!-- end content -->
 
                     <div class="blog-title-area">
                         <div class="tag-cloud-single">
-                            <span>Tags</span>
-                            @php($cate = DB::table('categories')->get())
+                            <span>Thể Loại</span>
+                            @php($cate = DB::table('categories')->where('id','>','0')->get())
                             @foreach ($cate as $data)
                                 <small><a href="{{ url('list-post/'.$data->id) }}">{{ $data->cate_name }}</a></small>
                             @endforeach
-                            
                         </div><!-- end meta -->
-
-                        {{-- <div class="post-sharing">
-                            <ul class="list-inline">
-                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
-                                <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
-                                <div id="fb-root"></div>
-                                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v15.0&appId=4786925174735123&autoLogAppEvents=1" nonce="ZbATmirA"></script>3
-                                <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
-                            </ul>
-                        </div> --}}
                     </div><!-- end title -->
 
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="banner-spot clearfix">
                                 <div class="banner-img">
-                                    <img src="public/upload/banner_01.jpg" alt="" class="img-fluid">
+                                    <img src="{{ url('public/upload/banner_01.jpg') }}" alt="" class="img-fluid">
                                 </div><!-- end banner-img -->
                             </div><!-- end banner -->
                         </div><!-- end col -->
@@ -107,41 +65,7 @@
 
                     <hr class="invis1">
 
-                    <div class="custombox prevnextpost clearfix">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="blog-list-widget">
-                                    <div class="list-group">
-                                        <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 justify-content-between text-right">
-                                                <img src=" {{url('public/upload/tech_menu_20.jpg')}} " alt="" class="img-fluid float-right">
-                                                <h5 class="mb-1">5 Beautiful buildings you need to before dying</h5>
-                                                <small>Prev Post</small>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div><!-- end col -->
-
-                            <div class="col-lg-6">
-                                <div class="blog-list-widget">
-                                    <div class="list-group">
-                                        <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 justify-content-between">
-                                                <img src="public/upload/tech_menu_20.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">Let's make an introduction to the glorious world of history</h5>
-                                                <small>Next Post</small>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div><!-- end col -->
-                        </div><!-- end row -->
-                    </div><!-- end author-box -->
-
-                    <hr class="invis1">
-
-                    <div class="custombox authorbox clearfix">
+                    {{-- <div class="custombox authorbox clearfix">
                         <h4 class="small-title">About author</h4>
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
@@ -160,57 +84,13 @@
                                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
                                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Website"><i class="fa fa-link"></i></a>
                                 </div><!-- end social -->
-
                             </div><!-- end col -->
                         </div><!-- end row -->
-                    </div><!-- end author-box -->
+                    </div><!-- end author-box --> --}}
 
                     <hr class="invis1">
 
-                    <div class="custombox clearfix">
-                        <h4 class="small-title">You may also like</h4>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="blog-box">
-                                    <div class="post-media">
-                                        <a href="tech-single.html" title="">
-                                            <img src="public/upload/tech_menu_04.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect">
-                                                <span class=""></span>
-                                            </div><!-- end hover -->
-                                        </a>
-                                    </div><!-- end media -->
-                                    <div class="blog-meta">
-                                        <h4><a href="tech-single.html" title="">We are guests of ABC Design Studio</a></h4>
-                                        <small><a href="blog-category-01.html" title="">Trends</a></small>
-                                        <small><a href="blog-category-01.html" title="">21 July, 2017</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end blog-box -->
-                            </div><!-- end col -->
-
-                            <div class="col-lg-6">
-                                <div class="blog-box">
-                                    <div class="post-media">
-                                        <a href="tech-single.html" title="">
-                                            <img src="public/upload/tech_menu_06.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect">
-                                                <span class=""></span>
-                                            </div><!-- end hover -->
-                                        </a>
-                                    </div><!-- end media -->
-                                    <div class="blog-meta">
-                                        <h4><a href="tech-single.html" title="">Nostalgia at work with family</a></h4>
-                                        <small><a href="blog-category-01.html" title="">News</a></small>
-                                        <small><a href="blog-category-01.html" title="">20 July, 2017</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end blog-box -->
-                            </div><!-- end col -->
-                        </div><!-- end row -->
-                    </div><!-- end custom-box -->
-
-                    <hr class="invis1">
-
-                    <div class="custombox clearfix">
+                    {{-- <div class="custombox clearfix">
                         <h4 class="small-title">3 Comments</h4>
                         <div class="row">
                             <div class="col-lg-12">
@@ -253,7 +133,7 @@
                                 </div>
                             </div><!-- end col -->
                         </div><!-- end row -->
-                    </div><!-- end custom-box -->
+                    </div><!-- end custom-box --> --}}
                 </div><!-- end page-wrapper -->
             </div><!-- end col -->
 
@@ -268,86 +148,26 @@
                     </div><!-- end widget -->
 
                     <div class="widget">
-                        <h2 class="widget-title">Popular Posts</h2>
+                        <h2 class="widget-title">Bài Viết Liên Quan</h2>
                         <div class="blog-list-widget">
-                            <div class="list-group">
-                                <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="w-100 justify-content-between">
-                                        <img src="{{ url('public/upload/tech_blog_08.jpg') }}" class="img-fluid float-left">
-                                        <h5 class="mb-1">5 Beautiful buildings you need..</h5>
-                                        <small>12 Jan, 2016</small>
-                                    </div>
-                                </a>
-
-                                <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="w-100 justify-content-between">
-                                        <img src="upload/tech_blog_01.jpg" alt="" class="img-fluid float-left">
-                                        <h5 class="mb-1">Let's make an introduction for..</h5>
-                                        <small>11 Jan, 2016</small>
-                                    </div>
-                                </a>
-
-                                <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="w-100 last-item justify-content-between">
-                                        <img src="upload/tech_blog_03.jpg" alt="" class="img-fluid float-left">
-                                        <h5 class="mb-1">Did you see the most beautiful..</h5>
-                                        <small>07 Jan, 2016</small>
-                                    </div>
-                                </a>
-                            </div>
+                            @php($get_post = DB::table('posts')->where('cate_id',$get_detail->cate_id)->inRandomOrder()->limit(3)->get())
+                            @foreach ($get_post as $data)
+                                <div class="list-group">
+                                    <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="w-100 justify-content-between">
+                                            <img src="{{ url('public/upload/'.$data->image) }}" class="img-fluid float-left">
+                                            <h5 class="mb-1">{{substr($data->content,0,50)."....."}}</h5>
+                                            <small> {{$data->created_at}} </small>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div><!-- end blog-list -->
                     </div><!-- end widget -->
 
-                    <div class="widget">
-                        <h2 class="widget-title">Recent Reviews</h2>
-                        <div class="blog-list-widget">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="w-100 justify-content-between">
-                                        <img src="{{ url('public/upload/tech_blog_02.jpg') }}" alt="" class="img-fluid float-left">
-                                        <h5 class="mb-1">Banana-chip chocolate cake recipe..</h5>
-                                        <span class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                </a>
-                                <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="w-100 justify-content-between">
-                                        <img src="upload/tech_blog_03.jpg" alt="" class="img-fluid float-left">
-                                        <h5 class="mb-1">10 practical ways to choose organic..</h5>
-                                        <span class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                </a>
-
-                                <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="w-100 last-item justify-content-between">
-                                        <img src="upload/tech_blog_07.jpg" alt="" class="img-fluid float-left">
-                                        <h5 class="mb-1">We are making homemade ravioli..</h5>
-                                        <span class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div><!-- end blog-list -->
-                    </div><!-- end widget -->
 
                     <div class="widget">
-                        <h2 class="widget-title">Follow Us</h2>
+                        <h2 class="widget-title">Theo Dõi Chúng Tôi</h2>
 
                         <div class="row text-center">
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">

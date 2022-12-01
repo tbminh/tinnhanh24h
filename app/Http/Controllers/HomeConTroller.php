@@ -60,7 +60,7 @@ class HomeConTroller extends Controller
         $add_user->role_id = 3;
         $add_user->email = $request->input('email');
         $add_user->password = bcrypt($request->input('password'));
-        $add_user->full_name = $request->input('full_name');
+        $add_user->full_name = $request->input('fullname');
         $add_user->gender = $request->input('gender');
         $add_user->phone_number = $request->input('phone');
         if ($request->hasFile('inputFileImage')) {
@@ -97,15 +97,19 @@ class HomeConTroller extends Controller
     }
     public function post_detail($id)
     {
-        $get_detail = DB::table('posts')->where('id', $id)->first(); //Lấy chi tiết tin tức 
-        $get_cate = DB::table('categories')->where('id', $get_detail->cate_id)->first(); //Lấy thể loại của tin tức
+        // $get_detail = DB::table('posts')->where('id', $id)->first(); //Lấy chi tiết tin tức 
+        // $get_cate = DB::table('categories')->where('id', $get_detail->cate_id)->first(); //Lấy thể loại của tin tức
+        $get_detail = Category::join('posts', 'categories.id', '=', 'posts.cate_id')
+            ->join('users', 'users.id', "=", 'posts.author')
+            ->select(['categories.cate_name', 'posts.*','users.full_name'])
+            ->where('posts.id',$id)
+            ->first();
         //Cập nhật lại view
         $update_view = Post::find($id);
         $update_view->view = $update_view->view + 1;
         $update_view->save();
         return view('custom_page.post_detail', [
-            'get_detail' => $get_detail,
-            'get_cate' => $get_cate
+            'get_detail' => $get_detail
         ]);
     }
     public function list_post($id, Request $request)
