@@ -102,15 +102,18 @@
                                             {{ $get_role->role_name}}
                                         </td>
                                         <td>
-                                            @if($show_user_role->role_id != 1)  
-                                                <button class="btn btn-primary btn-sm" type="button" disabled>Thay đổi</>
+                                            @if($show_user_role->role_id == 1)  
+                                                <button class="btn btn-primary btn-sm" type="button" disabled>Thay đổi</button>
                                             @else
-                                                <button class="btn btn-primary btn-sm"  type="button" data-toggle="modal" data-target="#model{{ $show_user_role->id }}">Thay đổi</button>
+                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-id="{{$show_user_role->id}}"
+                                                        data-target="#editRole">
+                                                    Thay đổi
+                                                </button>
                                             @endif
                                         </td>
                                     </tr>
                                     @endforeach
-                                {{-- <div class="modal fade" id="model{{ $show_user_role->id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                <div class="modal fade" id="editRole" tabindex="-1" role="dialog" aria-labelledby="editRoleModalLabel">
                                     <div class="modal-dialog" role="document">
                                         <form action="{{ url('update-role/'.$show_user_role->id) }}" method="POST">
                                             @csrf
@@ -132,7 +135,6 @@
                                                         <select name="inputRoleId" class="form-control">
                                                             @php($get_roles = DB::table('role_accesses')->where('id',$show_user_role->role_id)->get())
                                                             <option value="{{ $get_role->id }}">{{ $get_role->role_name }}</option>
-
                                                             <option value="">- - Chọn quyền - -</option>
                                                             @php($get_role_2 = DB::table('role_accesses')->get())
                                                             @foreach($get_role_2 as $data)
@@ -141,7 +143,6 @@
                                                                 @else
                                                                     <option value="{{ $data->id }}">{{ $data->role_name }}</option>
                                                                 @endif
-                                                                
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -155,7 +156,7 @@
                                             </div>
                                         </form>
                                     </div>
-                                </div> --}}
+                                </div>
                                 </tbody>
                             </table>
                             <ul class="pagination justify-content-xl-end" style="margin:20px 0">

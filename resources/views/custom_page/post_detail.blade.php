@@ -156,7 +156,7 @@
                                     <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
                                         <div class="w-100 justify-content-between">
                                             <img src="{{ url('public/upload/'.$data->image) }}" class="img-fluid float-left">
-                                            <h5 class="mb-1">{{substr($data->content,0,50)."....."}}</h5>
+                                            <h5 class="mb-1">{{substr($data->title,0,50)."....."}}</h5>
                                             <small> {{$data->created_at}} </small>
                                         </div>
                                     </a>

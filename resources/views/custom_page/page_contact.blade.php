@@ -51,6 +51,7 @@
 <script>
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
+    CKEDITOR.config.autoParagraph = false;
     CKEDITOR.replace( 'inputText' );
 </script>
 @endsection

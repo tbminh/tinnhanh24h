@@ -77,13 +77,7 @@
                                     <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
                                         <div class="w-100 justify-content-between">
                                             <img src="{{ url('public/upload/'.$data->image) }}" class="img-fluid float-left">
-                                            <h5 class="mb-1">{{ $data->title }}</h5>
-                                            {{-- <span class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </span> --}}
+                                            <h5 class="mb-1" title="{{ $data->title }}">{{substr($data->title,0,50)."....."}}</h5>
                                         </div>
                                     </a>
                                 @endforeach

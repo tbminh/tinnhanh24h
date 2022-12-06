@@ -170,7 +170,6 @@ class HomeConTroller extends Controller
         if ($this->isOnline()) {
             $mail_data = [
                 'recipient' => 'odinkingiv@gmail.com',
-                // 'recipient' => 'huynhtb7399@gmail.com',
                 'fromName' => $request->input('inputName'),
                 'fromEmail' => $request->input('inputEmail'),
                 'phone' => $request->input('inputPhone'),

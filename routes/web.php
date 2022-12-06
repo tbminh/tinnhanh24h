@@ -61,6 +61,7 @@ Route::middleware([CheckLogin::class])->group(function () {
     Route::get('change-pass/{id}', [AdminController::class, 'change_pass']);
     Route::post('post-add-user', [AdminController::class, 'post_add_user']);
     Route::put('update-profile/{id}', [AdminController::class, 'update_profile']);
+    Route::put('update-role/{id}', [AdminController::class, 'update_role']);
     Route::get('update-password/{id}', [AdminController::class, 'update_password']);
     Route::get('check-post/{id}', [AdminController::class, 'check_post']);
     Route::get('cancel-post/{id}', [AdminController::class, 'cancel_post']);

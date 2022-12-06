@@ -199,4 +199,7 @@ class AdminController extends Controller
         $add_role->save();
         return redirect()->back()->with('alert', 'Đã thêm thành công!');
     }
+    public function update_role($id){
+
+    }
 }

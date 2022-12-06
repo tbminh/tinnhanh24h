@@ -188,8 +188,9 @@
                                         </label>
                                     </div><br/>
                                     <div class="form-check">
-                                        <label for="">Hình ảnh</label>
-                                        <input type="file" class="form-control-file" name="inputFileImage">
+                                        <label for="" style="float: left;"><b style="margin-right: 200px;">Hình ảnh:</b>
+                                            <input type="file" class="form-control-file" name="inputFileImage">
+                                        </label>
                                         <img id="blah" src="#" style="max-width:100%;height:50px;border-radius:5px;"/>
                                     </div>
                                     <button type="submit" class="btn btn-block btn-round" style="border-radius: 3rem;" id="ajaxSubmit"><b>Đăng Ký</b></button>
