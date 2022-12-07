@@ -66,7 +66,6 @@
                     </div>
                     <!-- /.card -->
                 </section>
-
                 <section class="col-lg-6 connectedSortable">
                     @if(session()->has('message'))
                         <div class="alert alert-success">
@@ -106,14 +105,13 @@
                                                 <button class="btn btn-primary btn-sm" type="button" disabled>Thay đổi</button>
                                             @else
                                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-id="{{$show_user_role->id}}"
-                                                        data-target="#editRole">
+                                                        data-target="#editRole_{{$show_user_role->id}}">
                                                     Thay đổi
                                                 </button>
                                             @endif
                                         </td>
                                     </tr>
-                                    @endforeach
-                                <div class="modal fade" id="editRole" tabindex="-1" role="dialog" aria-labelledby="editRoleModalLabel">
+                                <div class="modal fade" id="editRole_{{$show_user_role->id}}" tabindex="-1" role="dialog" aria-labelledby="editRoleModalLabel">
                                     <div class="modal-dialog" role="document">
                                         <form action="{{ url('update-role/'.$show_user_role->id) }}" method="POST">
                                             @csrf
@@ -125,9 +123,8 @@
                             
                                                 <div class="modal-body">
                                                     <div class="form-group">
-                                                        <label for="">Họ tên</label>
-                                                        <input type="text" name="inputName" class="form-control"
-                                                        value="{{ $show_user_role->full_name }}" disabled>
+                                                        <label for="inputName">Họ tên</label>
+                                                        <input type="text" class="form-control" name="inputName"  value="{{ $show_user_role->full_name }}">
                                                     </div>
                             
                                                     <div class="form-group">
@@ -149,7 +146,7 @@
                             
                                                     <div class="form-group ">
                                                         <div class="col-12 text-right">
-                                                            <button type="submit" class="btn btn-primary btn-sm">Thêm</button>
+                                                            <button type="submit" class="btn btn-primary btn-sm">Cập Nhật</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -158,6 +155,7 @@
                                     </div>
                                 </div>
                                 </tbody>
+                                @endforeach
                             </table>
                             <ul class="pagination justify-content-xl-end" style="margin:20px 0">
                                 {{ $show_user_roles->links() }}
@@ -172,8 +170,6 @@
         </div>
         <!-- /.container-fluid -->
     </section>
-
-
     <script>
         CKEDITOR.replace( 'inputDescript' );
     </script>

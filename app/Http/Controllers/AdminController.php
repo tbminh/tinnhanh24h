@@ -55,7 +55,7 @@ class AdminController extends Controller
     {
         $show_user_roles = User::paginate(5);
         // return view('admin_page.role_access', ['show_user_roles' => $show_user_roles]);
-        return view('admin_page.role_access',compact('show_user_roles'));
+        return view('admin_page.role_access', compact('show_user_roles'));
     }
     public function page_guest()
     {
@@ -199,7 +199,28 @@ class AdminController extends Controller
         $add_role->save();
         return redirect()->back()->with('alert', 'Đã thêm thành công!');
     }
-    public function update_role($id){
-
+    public function update_role(Request $request, $id)
+    {
+        $update_role = User::find($id);
+        $update_role->full_name = $request->input('inputName');
+        $update_role->role_id = $request->input('inputRoleId');
+        $update_role->save();
+        return redirect()->back()->with('alert', 'Đã cập nhật thành công!');
+    }
+    public function update_user(Request $request, $id)
+    {
+        $update_user = User::find($id);
+        $update_user->full_name = $request->input('inputName');
+        $update_user->email = $request->input('inputEmail');
+        $update_user->phone_number = $request->input('inputPhone');
+        $update_user->gender = $request->input('inputSex');
+        if ($request->hasFile('inputFileImage')) {
+            $image = $request->file('inputFileImage');
+            $image_name = $image->getClientOriginalName();
+            $image->move(public_path('public/upload'), $image_name);
+            $update_user->avatar = $image_name;
+        }
+        $update_user->save();
+        return redirect()->back()->with('alert', 'Đã cập nhật thành công!');
     }
 }

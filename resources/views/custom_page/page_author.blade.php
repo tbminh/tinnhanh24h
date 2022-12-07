@@ -138,7 +138,6 @@
                             </div>
                         </div><!-- end blog-list -->
                     </div><!-- end widget -->
-
                     <div class="widget">
                         <div class="banner-spot clearfix">
                             <div class="banner-img">

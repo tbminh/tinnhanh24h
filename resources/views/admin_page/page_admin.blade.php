@@ -55,7 +55,6 @@
                                     <th>Họ và tên</th>
                                     <th>Hình ảnh</th>
                                     <th>Email</th>
-                                    <th>Địa chỉ</th>
                                     <th>Điện thoại</th>
                                     <th>Giới tính</th>
                                     <th scope="col" colspan="2">Tùy chọn</th>
@@ -87,12 +86,81 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a class="btn btn-success btn-xs" href="#">
+                                        <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-id="{{$data->id}}"
+                                            data-target="#editUser_{{$data->id}}">
                                             <i class="fas fa-exchange-alt"></i> Đổi
-                                        </a>
+                                        </button>
                                     </td>
                                 </tr>
+                                <div class="modal fade" id="editUser_{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="editRoleModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <form action="{{ url('update-user/'.$data->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">THAY ĐỔI THÔNG TIN</h5>
+                                                </div>
+                            
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="inputName">Họ tên</label>
+                                                        <input type="text" class="form-control" name="inputName"  value="{{ $data->full_name }}">
+                                                    </div>
 
+                                                    <div class="form-group">
+                                                        <label for="inputName">Email</label>
+                                                        <input type="email" class="form-control" name="inputEmail"  value="{{ $data->email }}">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="inputName">Điện Thoại</label>
+                                                        <input type="text" class="form-control" name="inputPhone"  value="{{ $data->phone_number }}">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="">Giới tính</label><br>
+                                                        @if ($data->gender == '0')
+                                                            <div class="form-check-inline">
+                                                                <label class="form-check-label">
+                                                                    <input type="radio" class="form-check-input" name="inputSex" checked value="0">Nam
+                                                                </label>
+                                                            </div>
+                                
+                                                            <div class="form-check-inline">
+                                                                <label class="form-check-label">
+                                                                    <input type="radio" class="form-check-input" name="inputSex" value="1">Nữ
+                                                                </label>
+                                                            </div>
+                                                        @else
+                                                            <div class="form-check-inline">
+                                                                <label class="form-check-label">
+                                                                    <input type="radio" class="form-check-input" name="inputSex" value="0">Nam
+                                                                </label>
+                                                            </div>
+                                
+                                                            <div class="form-check-inline">
+                                                                <label class="form-check-label">
+                                                                    <input type="radio" class="form-check-input" name="inputSex" checked value="1">Nữ
+                                                                </label>
+                                                            </div>   
+                                                        @endif
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="">Hình ảnh</label>
+                                                        <input type="file" class="form-control-file" id="imgInp" name="inputFileImage">
+                                                        <img id="blah" src="#" style="max-width:100%;height:50px;border-radius:5px;"/>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                        <div class="col-12 text-right">
+                                                            <button type="submit" class="btn btn-primary btn-sm">Cập Nhật</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                                 @empty
                                     <tr>
                                         <td colspan="11">
