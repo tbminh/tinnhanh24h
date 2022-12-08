@@ -112,6 +112,11 @@
                                                     </a>
                                                 </td>
                                             @endif
+                                            <td>
+                                                <a class="btn btn-danger btn-sm" href=" {{url('delete-post/'.$data->id)}} " onclick="return confirm('Bạn có chắc muốn xóa không?');">
+                                                    <i class="fa fa-trash"></i> Xóa
+                                                </a>
+                                            </td>
                                         @else
                                             @if ($data->post_status == 0)
                                             <td>
@@ -126,16 +131,16 @@
                                                     </a>
                                                 </td>
                                             @endif
+                                            <td>
+                                                <a class="btn btn-danger btn-sm" href="#">
+                                                    <i class="fa fa-trash"></i> Xóa
+                                                </a>
+                                            </td>
                                         @endif
                                         <td>
-                                            <a class="btn btn-danger btn-sm" href=" {{url('delete-post/'.$data->id)}} "  onclick="return confirm('Bạn có chắc muốn xóa không?');">
-                                                <i class="fa fa-trash"></i> Xóa
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#edit{{ $data->id }}">
+                                            <a class="btn btn-primary btn-sm" href="{{ url('edit-post/'.$data->id) }}">
                                                 <i class="fas fa-edit"></i> Đổi
-                                            </button>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -155,7 +160,7 @@
         <!-- /.row (main row) -->
     </section>
     {{-- Modal thêm mới sản phẩm --}}
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -216,7 +221,7 @@
             </div>
           </div>
         </div>
-    </div>
+    </div> --}}
 
 <script>
         function readURL(input) {

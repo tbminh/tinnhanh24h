@@ -51,10 +51,13 @@ Route::middleware([CheckLogin::class])->group(function () {
     Route::get('/administrator', [AdminController::class, 'page_admin']);
     Route::get('/delete-user/{id}', [AdminController::class, 'delete_user']);
     Route::get('/page-category', [AdminController::class, 'page_category']);
+    Route::put('/edit-category/{id}', [AdminController::class, 'edit_category']);
     Route::post('/post-add-category', [AdminController::class, 'post_add_category']);
     Route::get('delete-category/{id}', [AdminController::class, 'delete_category']);
     Route::get('page-post', [AdminController::class, 'page_post']);
-    Route::get('page-add-post', [AdminController::class, 'page_add_post']);
+    Route::get('edit-post/{id}', [AdminController::class, 'edit_post']);
+    Route::get('page-add-post/{id}', [AdminController::class, 'page_add_post']);
+    Route::put('update-post/{id}', [AdminController::class, 'update_post']);
     Route::post('add-posts', [AdminController::class, 'add_posts']);
     Route::get('delete-post/{id}', [AdminController::class, 'delete_post']);
     Route::get('page-profile/{id}', [AdminController::class, 'page_profile']);

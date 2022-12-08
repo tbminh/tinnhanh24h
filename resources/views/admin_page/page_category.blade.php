@@ -117,9 +117,10 @@
                                         <td> {{$data->cate_name}}</td>
                                         <td> {{$data->cate_note}}</td>
                                         <td>
-                                            <a class="btn btn-primary btn-xs" href="#" role="button" data-toggle="modal" data-target="#edit{{ $data->id }}">
+                                            <button class="btn btn-primary btn-xs" role="button"
+                                                    data-toggle="modal" data-id="{{$data->id}}" data-target="#edit_{{ $data->id }}">
                                                 <i class="fas fa-edit"></i> Đổi
-                                            </a>
+                                            </button>
                                         </td>
                                         <td>
                                             <a class="btn btn-danger btn-xs"
@@ -128,7 +129,7 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    {{-- <div class="modal fade" id="edit{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="edit_{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -139,11 +140,17 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <form action="{{ url('edit-category/'.$data->id) }}" method="POST" enctype="multipart/form-data">
-                                                        @csrf
                                                         @method('PUT')
+                                                        @csrf
                                                         <div class="form-group">
                                                             <label for="">Tên loại sản phẩm</label>
-                                                            <input type="text" name="inputName" class="form-control" value="{{ $data->category_name }}">
+                                                            <input type="text" name="inputName" class="form-control" value="{{ $data->cate_name }}">
+                                                            <div class="invalid-feedback">Chưa nhập tên sản phẩm </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="">Ghi Chú</label>
+                                                            <input type="text" name="inputNote" class="form-control" value="{{ $data->cate_note }}">
                                                             <div class="invalid-feedback">Chưa nhập tên sản phẩm </div>
                                                         </div>
                                                         
@@ -164,7 +171,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                     @empty
                                         <tr>
                                             <td colspan="10">

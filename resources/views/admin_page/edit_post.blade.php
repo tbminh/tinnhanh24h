@@ -23,11 +23,14 @@
 @endsection
 
 @section('content')
-<form action="{{ url('add-posts') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ url('update-post/'.$get_post->id) }}" method="POST" enctype="multipart/form-data">
+    @method('PUT')
     @csrf
     <div class="form-group">
         <label for="">Loại bài viết</label>
         <select name="inputCategoryId" class="form-control">
+            @php($get_cate = DB::table('categories')->where('id',$get_post->cate_id)->first())
+            <option value="{{ $get_cate->id }}"> {{ $get_cate->cate_name }}</option>
             <option value=""> --Chọn--</option>
             @php($get_categories = DB::table('categories')->get())
             @foreach($get_categories as $value)
@@ -41,18 +44,19 @@
     <div class="form-group">
         <label for="">Tác giả</label>
         <select name="inputAuthor" class="form-control">
-            <option value="{{ $id }}"> {{ Auth::user()->user_name }}</option>
+            @php($get_user = DB::table('users')->where('id',$get_post->author)->first())
+            <option value="{{ $get_user->id }}">{{ $get_user->user_name }}</option>
         </select>
     </div>
 
     <div class="form-group">
         <label for="">Tiêu Đề</label>
-        <input type="text" name="inputTitle" class="form-control" placeholder="Nhập tiêu đề...">
+        <input type="text" name="inputTitle" value="{{ $get_post->title }}" class="form-control" placeholder="Nhập tiêu đề...">
     </div>
 
     <div class="form-group">
         <label for="">Nội Dung</label>
-        <textarea name="inputContent" id="" cols="200" rows="20"></textarea>
+        <textarea name="inputContent" cols="200" rows="20">{{ $get_post->content }}</textarea>
     </div>
 
     <div class="form-group">

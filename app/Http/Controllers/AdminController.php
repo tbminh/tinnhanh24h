@@ -86,9 +86,9 @@ class AdminController extends Controller
         $show_posts = Post::paginate(5);
         return view('admin_page.page_post', ['show_posts' => $show_posts]);
     }
-    public function page_add_post(Request $request)
+    public function page_add_post($id)
     {
-        return view('admin_page.add_post');
+        return view('admin_page.add_post', ['id' => $id]);
     }
     //Hàm thêm bài viết mới
     public function add_posts(Request $request)
@@ -222,5 +222,41 @@ class AdminController extends Controller
         }
         $update_user->save();
         return redirect()->back()->with('alert', 'Đã cập nhật thành công!');
+    }
+    public function edit_category(Request $request, $id)
+    {
+        $update_cate = Category::find($id);
+        $update_cate->cate_name = $request->input('inputName');
+        $update_cate->cate_note = $request->input('inputNote');
+        if ($request->hasFile('inputFileImage')) {
+            $image = $request->file('inputFileImage');
+            $image_name = $image->getClientOriginalName();
+            $image->move(public_path('public/upload'), $image_name);
+            $update_cate->avatar = $image_name;
+        }
+        $update_cate->save();
+        return redirect()->back()->with('alert', 'Đã cập nhật thành công!');
+    }
+    public function edit_post(Request $request, $id)
+    {
+        $get_post = Post::where('id', $id)->first();
+        return view('admin_page.edit_post', ['get_post' => $get_post]);
+    }
+
+    public function update_post(Request $request, $id)
+    {
+        $update_post = Post::find($id);
+        $update_post->cate_id = $request->input('inputCategoryId');
+        $update_post->author = $request->input('inputAuthor');
+        $update_post->title = $request->input('inputTitle');
+        $update_post->content = $request->input('inputContent');
+        if ($request->hasFile('inputFileImage')) {
+            $image = $request->file('inputFileImage');
+            $image_name = $image->getClientOriginalName();
+            $image->move(public_path('public/upload'), $image_name);
+            $update_post->avatar = $image_name;
+        }
+        $update_post->save();
+        return redirect('page-post')->with('alert', 'Đã cập nhật thành công!');
     }
 }
